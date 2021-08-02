@@ -16,7 +16,7 @@ namespace ShopManagement.Application
             _productCategoryRepository = productCategoryRepository;
         }
 
-        public OperationResult Create(CreateproductCategory command)
+        public OperationResult Create(CreateProductCategory command)
         {
             var operation = new OperationResult();
             if (_productCategoryRepository.Exists(x=>x.Name==command.Name))
@@ -47,7 +47,7 @@ namespace ShopManagement.Application
 
         public EditProductCategory GetDetails(long id)
         {
-            return _productCategoryRepository.GetDetailes(id);
+            return _productCategoryRepository.GetDetails(id);
         }
 
         public List<ProductCategoryViewModel> Search(ProductCategorySearchModel searchModel)
@@ -55,14 +55,7 @@ namespace ShopManagement.Application
             return _productCategoryRepository.Search(searchModel);
         }
 
-        OperationResult IProductCategoryApplication.Create(CreateproductCategory command)
-        {
-            throw new System.NotImplementedException();
-        }
 
-        OperationResult IProductCategoryApplication.Edit(EditProductCategory command)
-        {
-            throw new System.NotImplementedException();
-        }
+       
     }
 }

@@ -1,16 +1,17 @@
 ﻿@page
 @model ServiceHost.Areas.Administration.Pages.Shop.ProductCategories.IndexModel
-
 @{
-   
+}
+@{
+    Layout = "Shared/_AdminLayout";
     ViewData["Title"] = "مدیریت گروه محصولات";
 }
 
 <div class="row">
     <div class="col-sm-12">
-        <h4 class="page-title pull-right">@ViewData["title"]</h4>
+        <h4 class="page-title pull-right">@ViewData["Title"]</h4>
         <p class="pull-left">
-            <a class="btn btn-success btn-lg" href="#showmodal=@Url.Page("./Index", "Create")">ایجاد گروه محصول جدید</a>
+            <a class="btn btn-success btn-lg" href="#showmodal=@Url.Page("./Index","Create")">ایجاد گروه محصول جدید</a>
         </p>
     </div>
 </div>
@@ -24,8 +25,8 @@
             <div class="panel-body">
                 <form class="form-inline" role="form" method="get">
                     <div class="form-group">
-                        <label class="sr-only" ></label>
-                        <input class="form-control" placeholder="نام گروه محصولی">
+                        <label class="sr-only" asp-for="SearchModel.Name"></label>
+                        <input class="form-control" asp-for="SearchModel.Name" placeholder="نام گروه محصولی">
                     </div>
                     <button type="submit" class="btn btn-success waves-effect waves-light m-l-10">جستجو</button>
                     <a class="btn btn-primary waves-effect waves-light m-l-10" asp-page="./Index">مشاهده همه</a>
@@ -55,12 +56,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @*@foreach (var item in ProductCategories)
+                                @foreach (var item in Model.ProductCategories)
                                 {
                                     <tr>
                                         <td>@item.Id</td>
                                         <td>
-                                            <img src="~/ProductPictures/@item.Picture" style="width: 70px; height: 70px" />
+                                            <img src="@item.Picture" style="width: 70px; height: 70px" />
                                         </td>
                                         <td>@item.Name</td>
                                         <td>@item.CreationDate</td>
@@ -70,7 +71,7 @@
                                             </a>
                                         </td>
                                     </tr>
-                                }*@
+                                }
                             </tbody>
                         </table>
                     </div>
@@ -81,12 +82,12 @@
 </div>
 
 @section Scripts {
-    
-    <script src="~/AdminTheme/assets/datatables/jquery.dataTables.min.js"></script>
-    <script src="~/AdminTheme/assets/datatables/dataTables.bootstrap.js"></script>
+    <script src="~/adminTheme/assets/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/adminTheme/assets/datatables/dataTables.bootstrap.js"></script>
+    <script src="~/AdminTheme/assets/js/textarea-autogrow.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $('#datatable').dataTable();
         });
     </script>
-}
+} 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
+﻿using Microsoft.EntityFrameworkCore;
 using ShopManagement.Domain.ProductCategoryAgg;
 using ShopManagement.Infrastructure.EFCore.Mapping;
 

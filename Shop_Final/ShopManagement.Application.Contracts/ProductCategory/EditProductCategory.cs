@@ -1,6 +1,6 @@
 ﻿namespace ShopManagement.Application.Contracts.ProductCategory
 {
-    public class EditProductCategory :CreateproductCategory
+    public class EditProductCategory :CreateProductCategory
     {
       public long Id { get; set; }
     }

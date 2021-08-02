@@ -24,7 +24,7 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
 
        
 
-        public EditProductCategory GetDetailes(long id)
+        public EditProductCategory GetDetails(long id)
         {
             return _context.ProductCategories.Select(x => new EditProductCategory()
             {
@@ -55,6 +55,7 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
             if (!string.IsNullOrWhiteSpace(searchModel.Name))
                 query = query.Where(x => x.Name.Contains(searchModel.Name));
             return query.OrderByDescending(x => x.Id).ToList();
+
         }
     }
 }
