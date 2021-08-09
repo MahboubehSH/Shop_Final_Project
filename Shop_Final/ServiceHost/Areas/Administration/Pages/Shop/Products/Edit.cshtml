@@ -1,9 +1,9 @@
-﻿@model ShopManagement.Application.Contracts.ProductCategory.EditProductCategory
+﻿@model ShopManagement.Application.Contracts.Product.EditProduct
 @{
 }
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h4 class="modal-title">ویرایش گروه محصول:@Model.Name</h4>
+    <h4 class="modal-title">ویرایش محصول:@Model.Name</h4>
 </div>
 
 <form asp-page="./Index" asp-page-handler="Edit"
@@ -20,11 +20,30 @@
                     <input type="text" class="form-control" asp-for="Name">
                     <span asp-validation-for="Name" class="error"></span>
                 </div>
-            </div><div class="col-md-6">
+            </div>
+            <div class="col-md-6">
                 <div class="form-group">
-                    <label asp-for="Slug" class="control-label">اسلاگ</label>
-                    <input type="text" class="form-control" asp-for="Slug">
-                    <span asp-validation-for="Slug" class="error"></span>
+                    <label asp-for="Code" class="control-label">کد</label>
+                    <input type="text" class="form-control" asp-for="Code">
+                    <span asp-validation-for="Code" class="error"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="UnitPrice" class="control-label">قیمت واحد</label>
+                    <input class="form-control" asp-for="UnitPrice">
+                    <span asp-validation-for="UnitPrice" class="error"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="CategoryId" class="control-label">گروه محصول</label>
+                    <select class="form-control" asp-for="CategoryId" asp-items='new SelectList(Model.Categories,"Id","Name")'>
+                        <option value="0">گروه محصول</option>
+                    </select>
+                    <span asp-validation-for="CategoryId" class="error"></span>
                 </div>
             </div>
         </div>
@@ -56,15 +75,32 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group no-margin">
+                    <label asp-for="ShortDescription" class="control-label">توضیحات</label>
+                    <textarea class="form-control" asp-for="ShortDescription" onchange="fillField('Description', 'MetaDescription')"
+                              style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 104px;"></textarea>
+                    <span asp-validation-for="ShortDescription" class="error"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group no-margin">
                     <label asp-for="Description" class="control-label">توضیحات</label>
-                    <textarea class="form-control" asp-for="Description" onchange="fillField('Description', 'MetaDescription')"
+                    <textarea class="form-control" asp-for="Description"
                               style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 104px;"></textarea>
                     <span asp-validation-for="Description" class="error"></span>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Slug" class="control-label">اسلاگ</label>
+                    <input type="text" class="form-control" asp-for="Slug">
+                    <span asp-validation-for="Slug" class="error"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="Keywords" class="control-label">کلمات کلیدی</label>
                     <input type="text" class="form-control" asp-for="Keywords">
@@ -75,14 +111,14 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group no-margin">
-                    <label asp-for="MetaDescriptions" class="control-label">توضیحات متا</label>
-                    <textarea class="form-control" asp-for="MetaDescriptions"
+                    <label asp-for="MetaDescription" class="control-label">توضیحات متا</label>
+                    <textarea class="form-control" asp-for="MetaDescription"
                               style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 104px;"></textarea>
-                    <span asp-validation-for="MetaDescriptions" class="error"></span>
+                    <span asp-validation-for="MetaDescription" class="error"></span>
                 </div>
             </div>
         </div>
-        <input type="hidden" asp-for="Id" value="@Model.Id"/>
+        <input type="hidden" asp-for="Id" value="@Model.Id" />
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">بستن</button>
