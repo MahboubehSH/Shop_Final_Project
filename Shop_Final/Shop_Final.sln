@@ -28,6 +28,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopManagement.Configuratio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceHost", "ServiceHost\ServiceHost.csproj", "{FDEF6BA4-FF19-4AE7-AF43-465308C85B57}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01_ShopFinalQuery", "01_ShopFinalQuery\01_ShopFinalQuery.csproj", "{E704BD89-7CCC-40A2-A291-5031727106D2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +64,10 @@ Global
 		{FDEF6BA4-FF19-4AE7-AF43-465308C85B57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDEF6BA4-FF19-4AE7-AF43-465308C85B57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDEF6BA4-FF19-4AE7-AF43-465308C85B57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E704BD89-7CCC-40A2-A291-5031727106D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E704BD89-7CCC-40A2-A291-5031727106D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E704BD89-7CCC-40A2-A291-5031727106D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E704BD89-7CCC-40A2-A291-5031727106D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
