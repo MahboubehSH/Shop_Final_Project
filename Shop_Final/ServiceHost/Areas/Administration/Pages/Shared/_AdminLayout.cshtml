@@ -24,10 +24,12 @@
     <!-- Waves-effect -->
     <link href="~/AdminTheme/assets/css/waves-effect.css" rel="stylesheet">
     <link href="~/AdminTheme/assets/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
-    <!-- sweet alerts -->
+    <!-- sweet alerts --> 
     <link href="~/AdminTheme/assets/sweet-alert/sweet-alert.min.css" rel="stylesheet">
 
     <!-- Custom Files -->
+    <link href="~/AdminTheme/assets/css/persian-datepicker.min.css" rel="stylesheet"/>
+
     <link href="~/AdminTheme/assets/css/helper.css" rel="stylesheet" type="text/css" />
     <link href="~/AdminTheme/assets/css/style.css" rel="stylesheet" type="text/css" />
 
@@ -36,7 +38,7 @@
 </head>
 
 <body class="fixed-left">
-
+    
     <!-- Begin page -->
     <div id="wrapper">
 
@@ -214,18 +216,18 @@
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/AdminTheme/assets/js/site.js"></script>
-    @RenderSection("Scripts",required:false)
-<!-- <script type="text/javascript"> -->
-    <!-- /* ============================================== -->
-    <!-- Counter Up -->
-    <!-- =============================================== */ -->
-    <!-- jQuery(document).ready(function($) { -->
-    <!-- $('.counter').counterUp({ -->
-    <!-- delay: 100, -->
-    <!-- time: 1200 -->
-    <!-- }); -->
-    <!-- }); -->
-    <!-- </script> -->
+    <script src="~/AdminTheme/assets/js/persian-date.min.js"></script>
+    <script src="~/AdminTheme/assets/js/persian-datepicker.min.js"></script>
+
+    @* @RenderSection("Scripts",required:false)*@
+    @RenderSection("Scripts", false)
+
+   <script>
+       $('.persianDateInput').persianDatepicker({
+           format: 'YYYY/MM/DD',
+           autoClose: true
+       });
+   </script>
 
 </body>
 </html>

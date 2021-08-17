@@ -1,11 +1,9 @@
+using DiscountManagement.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using ShopManagement.Configuration;
 
 namespace ServiceHost
@@ -24,6 +22,7 @@ namespace ServiceHost
         {
             var connectionString = Configuration.GetConnectionString("Shop_FinalDb");
             ShopManagementBootstrapper.Configure(services,connectionString);
+            DiscountManagementBootstrapper.Configure(services, connectionString);
             services.AddRazorPages();
         }
 
