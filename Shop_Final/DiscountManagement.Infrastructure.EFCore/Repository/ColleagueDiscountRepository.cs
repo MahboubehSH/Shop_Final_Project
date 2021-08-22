@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using _0_Framework.Application;
 using _0_Framework.Infrastructure;
 using DiscountManagement.Application.Contract.ColleagueDiscount;
@@ -15,9 +13,9 @@ namespace DiscountManagement.Infrastructure.EFCore.Repository
     {
         private readonly DiscountContext _context;
         private readonly ShopContext _shopContext;
-        public ColleagueDiscountRepository(DbContext context, DiscountContext context1, ShopContext shopContext) : base(context)
+        public ColleagueDiscountRepository(DiscountContext context, ShopContext shopContext) : base(context)
         {
-            _context = context1;
+            _context = context;
             _shopContext = shopContext;
         }
 
@@ -40,8 +38,8 @@ namespace DiscountManagement.Infrastructure.EFCore.Repository
                     Id = x.Id,
                     CreationDate = x.CreationDate.ToFarsi(),
                     DiscountRate = x.DiscountRate,
-                    ProductId = x.ProductId
-
+                    ProductId = x.ProductId,
+                    IsRemoved = x.IsRemoved
                 });
             if (searchModel.ProductId > 0)
                 query = query.Where(x => x.ProductId == searchModel.ProductId);
