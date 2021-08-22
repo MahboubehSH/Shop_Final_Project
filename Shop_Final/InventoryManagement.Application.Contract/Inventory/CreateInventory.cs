@@ -2,7 +2,7 @@
 {
     public class CreateInventory
     {
-        public long ProductId { get; private set; }
-        public double UnitPrice { get; private set; }
+        public long ProductId { get; set; }
+        public double UnitPrice { get; set; }
     }
 }
