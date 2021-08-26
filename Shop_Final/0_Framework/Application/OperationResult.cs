@@ -12,7 +12,7 @@ namespace _0_Framework.Application
         {
             IsSuccedded = false;
         }
-        public OperationResult Seccedded(string message = "عملیات با موفقیت انجام شد")
+        public OperationResult Succedded(string message = "عملیات با موفقیت انجام شد")
         {
             IsSuccedded = true;
             Message = message;

@@ -22,7 +22,7 @@
             sweetAlert("Oops...", "You forgot to enter your chat message", "error");
             this.$chatInput.focus();
         } else {
-            $('<li class="clearfix"><div class="chat-avatar"><img src="images/avatar-1.jpg" alt="male"><i>' + chatTime + '</i></div><div class="conversation-text"><div class="ctext-wrap"><i>John Deo</i><p>' + chatText + '</p></div></div></li>').appendTo('.conversation-list');
+            $('<li class="clearfix"><div class="chat-avatar"><img src="images/avatar-11.jpg" alt="male"><i>' + chatTime + '</i></div><div class="conversation-text"><div class="ctext-wrap"><i>John Deo</i><p>' + chatText + '</p></div></div></li>').appendTo('.conversation-list');
             this.$chatInput.val('');
             this.$chatInput.focus();
             this.$chatList.scrollTo('100%', '100%', {

@@ -26,7 +26,7 @@ namespace ShopManagement.Application
                 command.MetaDescriptions,command.Slug);
             _productCategoryRepository.Create(productcategory);
             _productCategoryRepository.SaveChanges();
-            return operation.Seccedded();
+            return operation.Succedded();
         }
 
         public OperationResult Edit(EditProductCategory command)
@@ -41,7 +41,7 @@ namespace ShopManagement.Application
                 command.PictureTitle, command.Keywords,
                 command.MetaDescriptions, command.Slug);
             _productCategoryRepository.SaveChanges();
-            return operation.Seccedded();
+            return operation.Succedded();
         }
 
 

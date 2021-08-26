@@ -22,7 +22,7 @@ namespace DiscountManagement.Application
             var colleagueDiscount = new ColleagueDiscount(command.ProductId, command.DiscountRate);
             _colleagueDiscountRepository.Create(colleagueDiscount);
             _colleagueDiscountRepository.SaveChanges();
-            return operation.Seccedded();
+            return operation.Succedded();
         }
 
         public OperationResult Edit(EditColleagueDiscount command)
@@ -37,7 +37,7 @@ namespace DiscountManagement.Application
                 return operation.Failed(ApplicationMessages.DuplicatedRecord);
             colleagueDiscount.Edit(command.ProductId, command.DiscountRate);
             _colleagueDiscountRepository.SaveChanges();
-            return operation.Seccedded();
+            return operation.Succedded();
         }
 
         public OperationResult Remove(long id)
@@ -48,7 +48,7 @@ namespace DiscountManagement.Application
                 return operation.Failed(ApplicationMessages.RecordNotFound);
             colleagueDiscount.Remove();
             _colleagueDiscountRepository.SaveChanges();
-            return operation.Seccedded();
+            return operation.Succedded();
         }
 
         public OperationResult Restore(long id)
@@ -59,7 +59,7 @@ namespace DiscountManagement.Application
                 return operation.Failed(ApplicationMessages.RecordNotFound);
             colleagueDiscount.Restore();
             _colleagueDiscountRepository.SaveChanges();
-            return operation.Seccedded();
+            return operation.Succedded();
         }
 
         public EditColleagueDiscount GetDetails(long id)
