@@ -14,6 +14,5 @@ namespace InventoryManagement.Application.Contract.Inventory
         public double UnitPrice { get; set; }
 
         public List<ProductViewModel> Products { get; set; }
-  
     }
 }

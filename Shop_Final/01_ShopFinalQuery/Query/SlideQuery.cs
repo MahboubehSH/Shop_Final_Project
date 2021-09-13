@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using _01_ShopFinalQuery.Contracts.Slide;
 using ShopManagement.Infrastructure.EFCore;

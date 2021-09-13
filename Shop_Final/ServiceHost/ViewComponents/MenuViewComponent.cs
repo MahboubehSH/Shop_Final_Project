@@ -3,20 +3,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ServiceHost.ViewComponents
 {
-    public class ProductCategoryViewComponent: ViewComponent
+    public class MenuViewComponent:ViewComponent
     {
         private readonly IProductCategoryQuery _productCategoryQuery;
 
-        public ProductCategoryViewComponent(IProductCategoryQuery productCategoryQuery)
+        public MenuViewComponent(IProductCategoryQuery productCategoryQuery)
         {
             _productCategoryQuery = productCategoryQuery;
         }
 
         public IViewComponentResult Invoke()
         {
-            var productcategories = _productCategoryQuery.GetProductCategories();
-            return View(productcategories);
+            return View();
         }
-
     }
 }

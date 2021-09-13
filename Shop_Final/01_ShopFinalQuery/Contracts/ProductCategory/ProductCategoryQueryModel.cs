@@ -1,4 +1,6 @@
-﻿
+﻿using System.Collections.Generic;
+using _01_ShopFinalQuery.Contracts.Product;
+
 namespace _01_ShopFinalQuery.Contracts.ProductCategory
 {
     public class ProductCategoryQueryModel
@@ -9,5 +11,10 @@ namespace _01_ShopFinalQuery.Contracts.ProductCategory
         public string PictureAlt { get;set; }
         public string PictureTitle { get;set; }
         public string Slug { get; set; }
+        public string Keyword { get; set; }
+        public string MetaDescription { get; set; }
+        public string Description { get; set; }
+
+        public List<ProductQueryModel> Products { get; set; }
     }
 }
