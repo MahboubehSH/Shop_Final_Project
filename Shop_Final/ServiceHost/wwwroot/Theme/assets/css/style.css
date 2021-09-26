@@ -2680,10 +2680,9 @@ select {
 	display: -ms-flexbox;
 	display: flex;
 	flex-direction: column;
-	width: 62px;
-	height: 70px;
+    padding: 5px;
 	text-align: center;
-	background: #fff;
+	background:transparent;
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: column;

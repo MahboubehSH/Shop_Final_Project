@@ -4,13 +4,20 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Arooj.E.V</title>
-
-    <!-- Vendor CSS -->
+    @if (ViewData["Title"] != null)
+    {
+        <title>@ViewData["Title"]-آروج</title>
+    }
+    else
+    {
+        <title>شرکت ارتعاش الکترونیک آروج</title>
+    }
+    
+    <meta name="keywords" content="@ViewData["keywords"]"/> 
+    <meta name="description" content="@ViewData["metaDescription"]" />
+  
     <link href="~/Theme/assets/css/vendors.css" rel="stylesheet">
-    <!-- Main CSS -->
     <link href="~/Theme/assets/css/style.css" rel="stylesheet">
-    <!-- Custom CSS -->
     <link href="~/Theme/assets/css/Custom.css" rel="stylesheet">
 </head>
 

@@ -20,8 +20,8 @@ namespace BlogManagement.Domain.ArticleAgg
         public long CategoryId { get; private set; }
         public ArticleCategory Category { get;private set; }
 
-        public Article(string title, string description, string picture, string pictureAlt,
-            string pictureTitle, string shortDescription,DateTime publishDate, string slug, string keywords,
+        public Article(string title, string description, string picture, string shortDescription,
+            string pictureAlt, string pictureTitle,DateTime publishDate, string slug, string keywords,
             string metaDescription, string canonicalAddress, long categoryId)
         {
             Title = title;
@@ -38,8 +38,8 @@ namespace BlogManagement.Domain.ArticleAgg
             CategoryId = categoryId;
         }
 
-        public void Edit(string title, string description, string picture, string pictureAlt,
-            string pictureTitle, string shortDescription, DateTime publishDate, string slug, string keywords,
+        public void Edit(string title, string description, string picture, string shortDescription,
+            string pictureAlt, string pictureTitle, DateTime publishDate, string slug, string keywords,
             string metaDescription, string canonicalAddress, long categoryId)
         {
             Title = title;
