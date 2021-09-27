@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using _0_Framework.Application;
 
-namespace ShopManagement.Application.Contracts.Comment
+namespace CommentManagement.Application.Contracts.Comment
 {
     public interface ICommentApplication
     {

@@ -299,18 +299,18 @@
                                                             <div class="rating-form row">
                                                                 <div class="col-md-6 col-12 form-group">
                                                                     <label for="name">نام:</label>
-                                                                    <input id="name" placeholder="نام خود را وارد نمائید" name="name" type="text">
+                                                                    <input id="name" placeholder="مثال:مهبد حیدری" name="name" type="text">
                                                                 </div>
                                                                 <div class="col-md-6 col-12 form-group">
                                                                     <label for="email">ایمیل:</label>
-                                                                    <input id="email" placeholder="ایمیل خود را وارد نمائید" name="email" type="text">
+                                                                    <input id="email" placeholder="مثال: contact@gmail.com" name="email" type="text">
                                                                 </div>
                                                                 <div class="col-12 form-group">
                                                                     <label for="your-review">نظر شما:</label>
                                                                     <textarea name="message" id="message" placeholder="نظر خود را بنویسید ..."></textarea>
                                                                 </div>
-                                                                <input type="hidden" name="productId" value="@Model.Product.Id" />
-                                                                @*<input type="hidden" name="type" value="@CommnetManagement.Infrastructure.EFCore.CommentType.Product" />*@
+                                                                <input type="hidden" name="ownerRecordId" value="@Model.Product.Id" />
+                                                                @*<input type="hidden" name="type" value="CommnetManagement.Infrastructure.EFCore.CommentType.Product" />*@
                                                                 <input type="hidden" name="productSlug" value="@Model.Product.Slug" />
                                                                 <div class="col-12">
                                                                     <input value="ارسال" type="submit">
