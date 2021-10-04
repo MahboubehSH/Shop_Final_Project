@@ -20,23 +20,21 @@ namespace AccountManagement.Application
             _authHelper = authHelper;
         } 
 
-        public OperationResult Create(CreateAccount command)
+        public OperationResult Register(RegisterAccount command)
         {
             var operation = new OperationResult();
 
-            if (_accountRepository
-                .Exists(x => x.Username == command.Username || x.Mobile == command.Mobile))
+            if (_accountRepository.Exists(x => x.Username == command.Username || x.Mobile == command.Mobile))
                 return operation.Failed(ApplicationMessages.DuplicatedRecord);
 
             var password = _passwordHasher.Hash(command.Password);
             var path = $"profilePhotos";
             var picturePath = _fileUploader.Upload(command.ProfilePhoto, path);
-            var account = new Account(command.Fullname,command.Username,
-                password,command.Mobile,command.RoleId,picturePath);
-
+            var account = new Account(command.Fullname, command.Username, password, command.Mobile, command.RoleId,
+                picturePath);
             _accountRepository.Create(account);
             _accountRepository.SaveChanges();
-            return operation.Succedded();  
+            return operation.Succedded();
         }
 
         public OperationResult Edit(EditAccount command)
@@ -81,19 +79,20 @@ namespace AccountManagement.Application
         {
             var operation = new OperationResult();
             var account = _accountRepository.GetBy(command.Username);
-
             if (account == null)
                 return operation.Failed(ApplicationMessages.WrongUserPass);
 
-            (bool Verified,bool NeedsUpgrade) result =  _passwordHasher.Check(account.Password, command.Password);
-
+            var result = _passwordHasher.Check(account.Password, command.Password);
             if (!result.Verified)
                 return operation.Failed(ApplicationMessages.WrongUserPass);
 
-            var authViewModel = new AuthViewModel(account.Id,account.RoleId,account.Fullname,account.Username);
+
+            var authViewModel = new AuthViewModel(account.Id, account.RoleId, account.Fullname
+                , account.Username);
+
             _authHelper.Signin(authViewModel);
             return operation.Succedded();
-             
+
         }
 
         public EditAccount GetDetails(long id)
