@@ -1,26 +1,26 @@
-using System.Collections.Generic;
 using AccountManagement.Application.Contracts.Role;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ServiceHost.Areas.Administration.Pages.Accounts.Role
 {
-    public class IndexModel : PageModel
+    public class CreateModel : PageModel
     {
-        [TempData]
-        public string Message { get; set;}
-        public List<RoleViewModel> Roles;
-
+        public CreateRole Command;
         private readonly IRoleApplication _roleApplication;
 
-        public IndexModel(IRoleApplication roleApplication)
+        public CreateModel(IRoleApplication roleApplication)
         {
             _roleApplication = roleApplication;
         }
 
         public void OnGet()
         {
-            Roles = _roleApplication.List();
+        }
+        public IActionResult OnPost(CreateRole command)
+        {
+            var result = _roleApplication.Create(command);
+            return RedirectToPage("Index");
         }
     }
 }

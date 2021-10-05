@@ -1,4 +1,5 @@
-﻿using AccountManagement.Application.Contracts.Account;
+﻿using _0_Framework.Application;
+using AccountManagement.Application.Contracts.Account;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -6,12 +7,14 @@ namespace ServiceHost.Pages
 {
     public class AccountModel : PageModel
     {
-        [TempData]
+        //[TempData]
         public string LoginMessage { get; set; }
 
         [TempData]
         public string RegisterMessage { get; set; }
 
+        public OperationResult Result;
+        
 
         private readonly IAccountApplication _accountApplication;
 
@@ -24,13 +27,13 @@ namespace ServiceHost.Pages
         {
         }
 
-        public IActionResult OnPostLogin(Login command)
+        public IActionResult OnPost(Login command)
         {
-            var result = _accountApplication.Login(command);
-            if (result.IsSuccedded)
+             Result = _accountApplication.Login(command);
+            if (Result.IsSuccedded)
                 return RedirectToPage("/Index");
 
-            LoginMessage = result.Message;
+            LoginMessage = Result.Message;
             return RedirectToPage("/Account");
         }
 
