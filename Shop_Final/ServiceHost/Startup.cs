@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
@@ -48,8 +49,10 @@ namespace ServiceHost
             services.Configure<CookiePolicyOptions>(options =>
             {
                 options.CheckConsentNeeded = context => true;
+                //options.MinimumSameSitePolicy = SameSiteMode.None;
                 options.MinimumSameSitePolicy = SameSiteMode.Lax;
             });
+
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, o =>
@@ -90,7 +93,7 @@ namespace ServiceHost
                 });
         } 
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline .
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

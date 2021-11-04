@@ -34,7 +34,6 @@ namespace _0_Framework.Application
             return result;
         }
 
-
         public List<int> GetPermissions()
         {
             if (!IsAuthenticated())
@@ -70,6 +69,9 @@ namespace _0_Framework.Application
         {
             return _contextAccessor.HttpContext.User.Identity.IsAuthenticated;
             //var claims = _contextAccessor.HttpContext.User.Claims.ToList();
+            ////if (claims.Count > 0)
+            ////    return true;
+            ////return false;
             //return claims.Count > 0;
         }
 
@@ -82,11 +84,11 @@ namespace _0_Framework.Application
                 new Claim(ClaimTypes.Name, account.Fullname),
                 new Claim(ClaimTypes.Role, account.RoleId.ToString()),
                 new Claim("Username", account.Username), // Or Use ClaimTypes.NameIdentifier
-                new Claim("permissions", permissions)
+                new Claim("permissions", permissions),
                 //new Claim("Mobile", account.Mobile)
             };
 
-            var claimsIdentity = new ClaimsIdentity(claims,CookieAuthenticationDefaults.AuthenticationScheme);
+            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
             var authProperties = new AuthenticationProperties
             {

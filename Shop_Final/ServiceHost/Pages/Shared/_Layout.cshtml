@@ -6,49 +6,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     @if (ViewData["Title"] != null)
     {
-        <title>@ViewData["Title"]|ارتعاش الکترونیک آروج</title>
+        <title>@ViewData["Title"] - شرکت ارتعاش الکترونیک آروج</title>
     }
     else
     {
-        <title>شرکت ارتعاش الکترونیک آروج</title>
+        <title>Arooj.E.V</title>
     }
-    
-    <meta name="keywords" content="@ViewData["keywords"]"/> 
+
+    <meta name="keywords" content="@ViewData["keywords"]" />
     <meta name="description" content="@ViewData["metaDescription"]" />
-  
+
     <link href="~/Theme/assets/css/vendors.css" rel="stylesheet">
     <link href="~/Theme/assets/css/style.css" rel="stylesheet">
     <link href="~/Theme/assets/css/Custom.css" rel="stylesheet">
+
 </head>
 
 <body>
 
-    @await Component.InvokeAsync("Menu")
+@await Component.InvokeAsync("Menu")
 
-    @RenderBody()
+@RenderBody()
 
-    @await Component.InvokeAsync("Footer")
+@await Component.InvokeAsync("Footer")
 
-    <div class="search-overlay" id="search-overlay">
-        <a href="javascript:void(0)" class="close-search-overlay" id="close-search-overlay">
-            <i class="ion-ios-close-empty"></i>
-        </a>
-        <div class="search-form">
-            <form method="get" asp-page="/Search">
-                <input type="search" name="value" id="value" placeholder="هرچه میخواهید در فروشگاه جستجو کنید...">
-                <button type="submit">
-                    <i class="ion-android-search"></i>
-                </button>
-            </form>
-        </div>
+
+<div class="search-overlay" id="search-overlay">
+    <a href="javascript:void(0)" class="close-search-overlay" id="close-search-overlay">
+        <i class="ion-ios-close-empty"></i>
+    </a>
+    <div class="search-form">
+        <form method="get" asp-page="/Search">
+            <input type="search" name="value" id="value" placeholder="هرچه می خواهید در فروشگاه جستجو کنید ...">
+            <button type="submit">
+                <i class="ion-android-search"></i>
+            </button>
+        </form>
     </div>
-<div id="scroll-top">
-        <span>برو بالا</span><i class="ion-chevron-right"></i><i class="ion-chevron-right"></i>
 </div>
 
-    <script src="~/Theme/assets/js/vendors.js"></script>
-    <script src="~/Theme/assets/js/active.js"></script>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<div id="scroll-top">
+    <span>برو بالا</span><i class="ion-chevron-right"></i><i class="ion-chevron-right"></i>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/Theme/assets/js/vendors.js"></script>
+<script src="~/Theme/assets/js/active.js"></script>
+<script src="~/Theme/assets/js/plugins.js"></script>
+<script src="~/Theme/assets/js/custom.js"></script>
+
+<script>
+    $(document).ready(function () {
+        function updateCart() {
+            const cookieName = "cart-items";
+            let products = $.cookie(cookieName);
+            products = JSON.parse(products);
+            $("#cart_items_count").text(products.length);
+            const cartItemsWrapper = $("#cart_items_wrapper");
+            cartItemsWrapper.html('');
+            products.forEach(x => {
+                const product = `<div class="single-cart-item">
+                            <a href="javascript:void(0)" class="remove-icon" onclick="removeFromCart('${x.id}')">
+                                <i class="ion-android-close"></i>
+                            </a>
+                            <div class="image">
+                                <a href="single-product.html">
+                                    <img src="/ProductPictures/${x.picture}"
+                                         class="img-fluid" alt="">
+                                </a>
+                            </div>
+                            <div class="content">
+                                <p class="product-title">
+                                    <a href="single-product.html">محصول: ${x.name}</a>
+                                </p>
+                                <p class="count">تعداد: ${x.count}</p>
+                                <p class="count">قیمت واحد: ${x.unitPrice}</p>
+                            </div>
+                        </div>`;
+
+                cartItemsWrapper.append(product);
+            });
+        }
+        updateCart();
+    });
+</script>
 </body>
 
 </html>
