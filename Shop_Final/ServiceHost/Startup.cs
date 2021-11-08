@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
 using _0_Framework.Application;
+using _0_Framework.Application.ZarinPal;
 using _0_Framework.Infrastructure;
 using AccountManagement.Configuration;
 using BlogManagement.Infrastructure.Configuration;
 using CommentManagement.Infrastructure.Configuration;
 using DiscountManagement.Configuration;
 using InventoryManagement.Infrastructure.Configuration;
+using InventoryManagement.Presentation.Api;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -17,6 +19,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ShopManagement.Configuration;
+using ShopManagement.Presentation.Api;
 
 namespace ServiceHost
 {
@@ -45,6 +48,7 @@ namespace ServiceHost
             services.AddSingleton<IPasswordHasher , PasswordHasher>();
             services.AddTransient<IFileUploader, FileUploader>();
             services.AddTransient<IAuthHelper, AuthHelper>();
+            services.AddTransient<IZarinPalFactory, ZarinPalFactory>();
 
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -90,7 +94,10 @@ namespace ServiceHost
                     options.Conventions.AuthorizeAreaFolder("Administration", "/Discounts", "Discount");
                     options.Conventions.AuthorizeAreaFolder("Administration", "/Accounts", "Account");
                     options.Conventions.AuthorizeAreaFolder("Administration", "/Inventory", "Inventory");
-                });
+                })
+                .AddApplicationPart(typeof(ProductController).Assembly)
+                .AddApplicationPart(typeof(InventoryController).Assembly)
+                .AddNewtonsoftJson();
         } 
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline .
@@ -123,6 +130,7 @@ namespace ServiceHost
             {
                 endpoints.MapRazorPages();
                 endpoints.MapDefaultControllerRoute();
+                endpoints.MapControllers();
             });
         }
     }
