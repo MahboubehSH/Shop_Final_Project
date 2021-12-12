@@ -21,6 +21,13 @@ namespace AccountManagement.Infrastructure.EFCore.Repository
             return _context.Accounts.FirstOrDefault(x => x.Username == username);
         }
 
+        public string  GetProfilePhoto(string username)
+        {
+             return _context.Accounts.FirstOrDefault(x => x.Username == username)?.ProfilePhoto;
+
+              
+        }
+
         public EditAccount GetDetails(long id)
         {
             return _context.Accounts

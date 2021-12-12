@@ -8,7 +8,7 @@
                 <div class="header-wrapper d-none d-lg-flex">
                     <div class="logo">
                         <a asp-page="/Index">
-                            <img src="~/Theme/assets/img/logo.png" class="img-fluid" alt="">
+                            <img src="~/Theme/assets/img/Logo_Site.png" class="img-fluid" alt="">
                         </a>
                     </div>
                     <div class="navigation-menu-wrapper">
@@ -40,7 +40,7 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="contact.html">تماس با ما</a>
+                                    <a asp-page="/Contact">تماس با ما</a>
                                 </li>
                                 @if (_authHelper.IsAuthenticated())
                                 {
@@ -140,8 +140,8 @@
                     <div class="row align-items-center">
                         <div class="col-6 col-md-6">
                             <div class="header-logo">
-                                <a href="index.html">
-                                    <img src="~/Theme/assets/img/logo.png" class="img-fluid" alt="">
+                                <a asp-page="/Index">
+                                    <img src="~/Theme/assets/img/Logo_Site.png" class="img-fluid" alt="">
                                 </a>
                             </div>
                         </div>
@@ -151,7 +151,7 @@
                                     <ul class="icon-list justify-content-end">
                                         <li>
                                             <div class="header-cart-icon">
-                                                <a href="cart.html">
+                                                <a asp-page="/Cart">
                                                     <i class="ion-bag"></i>
                                                     <span class="counter">3</span>
                                                 </a>
@@ -197,26 +197,25 @@
                         <a asp-page="/Index">صفحه اصلی</a>
                     </li>
                     <li class="menu-item-has-children">
-                        <a href="#">محصولات</a>
+                        <a>محصولات</a>
                         <ul class="sub-menu">
-                            <li>
-                                <a href="blog-left-sidebar.html">دکوری</a>
-                            </li>
-                            <li>
-                                <a href="blog-right-sidebar.html">نگه دارنده</a>
-                            </li>
+                            @foreach (var category in Model.ProductCategories)
+                            {
+                                <li>
+                                    <a asp-page="./ProductCategory" asp-route-id="@category.Slug">@category.Name</a>
+                                </li>
+                            }
                         </ul>
                     </li>
-
                     <li class="menu-item-has-children">
-                        <a href="#">مقالات</a>
+                        <a>مقالات</a>
                         <ul class="sub-menu">
-                            <li>
-                                <a href="blog-left-sidebar.html">گروه مقاله1</a>
-                            </li>
-                            <li>
-                                <a href="blog-right-sidebar.html">گروه مقاله2</a>
-                            </li>
+                            @foreach (var category in Model.ArticleCategories)
+                            {
+                                <li>
+                                    <a asp-page="./ArticleCategory" asp-route-id="@category.Slug">@category.Name</a>
+                                </li>
+                            }
                         </ul>
                     </li>
                     <li class="">
@@ -230,14 +229,28 @@
                     <ul>
                         <li class="menu-item-has-children">
                             <a href="#">پروفایل من </a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="login-register.html">ثبت نام</a>
+                        <ul class="sub-menu">
+                            @*<li>
+                                    <a asp-page="/Account">ثبت نام</a>
                                 </li>
                                 <li>
-                                    <a href="login-register.html">ورود</a>
+                                    <a asp-page="/Account">ورود</a>
+                                </li>*@
+                            @*</ul>
+                           </li>*@
+                            @if (_authHelper.IsAuthenticated())
+                            {
+                                <li>
+                                    <a asp-page="/Account" asp-page-handler="Logout">خروج</a>
                                 </li>
-                            </ul>
+                            }
+                            else
+                            {
+                                <li>
+                                    <a asp-page="/Account">وورد / ثبت نام</a>
+                                </li>
+                            }
+                        </ul>
                         </li>
                     </ul>
                 </nav>
@@ -249,13 +262,12 @@
                         <ul class="header-contact-info__list">
                             <li>
                                 <i class="ion-android-phone-portrait"></i>
-                                <a href="tel://12452456012">
-                                    (1245) 2456
-                                    012
+                                <a href="tel://09172402275">
+                                   +989172402275
                                 </a>
                             </li>
                             <li>
-                                <i class="ion-android-mail"></i> <a href="mailto:info@yourdomain.com">info@atriya.com</a>
+                                <i class="ion-android-mail"></i> <a href="mailto:arooj.e.v.co@gmail.com">arooj.e.v.co@gmail.com</a>
                             </li>
                         </ul>
                     </div>

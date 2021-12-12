@@ -22,10 +22,11 @@ namespace BlogManagement.Application
             if (_articleCategoryRepository.Exists(x => x.Name == command.Name))
                 return operation.Failed(ApplicationMessages.DuplicatedRecord);
 
-            var pictureName = _fileUploader.Upload(command.Picture , command.Slug);
+            var slug = command.Slug.Slugify();
+            var pictureName = _fileUploader.Upload(command.Picture , slug);
 
             var articleCategory = new ArticleCategory(command.Name, pictureName,command.PictureAlt,command.PictureTitle, command.Description,
-                command.ShowOrder, command.Slug, command.Keywords, command.MetaDescription, command.CanonicalAddress);
+                command.ShowOrder, slug , command.Keywords, command.MetaDescription, command.CanonicalAddress);
 
             _articleCategoryRepository.Create(articleCategory);
             _articleCategoryRepository.SaveChanges();
@@ -43,10 +44,11 @@ namespace BlogManagement.Application
             if (_articleCategoryRepository.Exists(x => x.Name == command.Name && x.Id!=command.Id))
                 return operation.Failed(ApplicationMessages.DuplicatedRecord);
 
-            var pictureName = _fileUploader.Upload(command.Picture, command.Slug);
+            var slug = command.Slug.Slugify();
+            var pictureName = _fileUploader.Upload(command.Picture, slug);
 
             articleCategory.Edit(command.Name, pictureName,command.PictureAlt,command.PictureTitle, command.Description,
-                command.ShowOrder, command.Slug, command.Keywords, command.MetaDescription, command.CanonicalAddress);
+                command.ShowOrder, slug, command.Keywords, command.MetaDescription, command.CanonicalAddress);
 
              _articleCategoryRepository.SaveChanges();
              return operation.Succedded();

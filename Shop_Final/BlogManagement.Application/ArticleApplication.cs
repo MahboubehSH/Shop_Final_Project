@@ -25,14 +25,15 @@ namespace BlogManagement.Application
             if (_articleRepository.Exists(x => x.Title == command.Title))
                 return operation.Failed(ApplicationMessages.DuplicatedRecord);
 
+            var slug = command.Slug.Slugify();
             var categorySlug =_articleCategoryRepository.GetSlugBy(command.CategoryId) ;
-            var path =$"{categorySlug}/{command.Slug}" ;
+            var path =$"{categorySlug}/{slug}" ;
             var pictureName =_fileUploader.Upload(command.Picture, path);
             var publishDate = command.PublishDate.ToGeorgianDateTime();
-
+            
 
             var article = new Article(command.Title, command.Description, pictureName,command.ShortDescription,
-                command.PictureAlt,command.PictureTitle,publishDate,command.Slug,
+                command.PictureAlt,command.PictureTitle,publishDate,slug,
                 command.Keywords,command.MetaDescription,command.CanonicalAddress,command.CategoryId);
 
             _articleRepository.Create(article);
@@ -51,12 +52,13 @@ namespace BlogManagement.Application
              if (_articleRepository.Exists(x => x.Title == command.Title && x.Id != command.Id))
                  return operation.Failed(ApplicationMessages.DuplicatedRecord);
 
-             var path = $"{article.Category.Slug}/{command.Slug}";
+             var slug = command.Slug.Slugify();
+            var path = $"{article.Category.Slug}/{slug}";
              var pictureName = _fileUploader.Upload(command.Picture, path);
              var publishDate = command.PublishDate.ToGeorgianDateTime();
 
              article.Edit(command.Title, command.Description, pictureName, command.ShortDescription,
-                 command.PictureAlt, command.PictureTitle, publishDate, command.Slug,
+                 command.PictureAlt, command.PictureTitle, publishDate, slug,
                  command.Keywords, command.MetaDescription, command.CanonicalAddress, command.CategoryId);
              _articleRepository.SaveChanges();
              return operation.Succedded();

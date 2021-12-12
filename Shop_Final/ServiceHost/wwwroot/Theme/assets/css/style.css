@@ -1524,7 +1524,7 @@ select {
 .footer-copyright-wrapper .copyright-text {
 	font-weight: 400;
 	line-height: 30px;
-	color: #929292;
+	color: black;
 }
 
 .footer-copyright-wrapper .copyright-text a {
@@ -2480,7 +2480,7 @@ select {
 	text-transform: uppercase;
 	color: #fff;
 	border-right: 1px solid #fff;
-	background-color: #292929;
+	background-color: #006400;
 }
 
 .product-countdown .single-countdown .single-countdown-time {
@@ -4239,6 +4239,10 @@ select {
 	color: #bd081b;
 }
 
+	.social-share-buttons ul li a i.fa-instagram {
+		color: #1da1f2;
+	}
+
 .social-share-buttons ul li:hover a {
 	color: #fff;
 	border-color: transparent;
@@ -4257,6 +4261,11 @@ select {
 	border-color: #4867aa;
 	background-color: #4867aa;
 }
+
+	.social-share-buttons ul li:hover a.instagram {
+        border-color: #00ced1;
+        background-color: #00ced1;
+	}
 
 .social-share-buttons ul li:hover a.google-plus {
 	border-color: #dd5144;

@@ -125,9 +125,9 @@
                                                 <i class="ion-android-star-outline"></i>
                                             </span>
 
-                                            <span class="review-count">
+                                            @*<span class="review-count">
                                                 <a href="#">(2 reviews)</a> | <a href="#">نظر دهید</a>
-                                            </span>
+                                            </span>*@
                                         </div>
 
                                         <p class="single-grid-product__price" style="direction: rtl">
@@ -143,7 +143,7 @@
 
                                         </p>
 
-                                        <p class="single-info">کد محصول: <span class="value">@Model.Product.Code</span> </p>
+                                        <p class="single-info">@Model.Product.Code<span class="value">:کد محصول</span> </p>
                                         <p class="single-info">
                                             @if (Model.Product.IsInStock)
                                             {
@@ -189,19 +189,15 @@
                                                     </a> 
                                                 </li>
                                                 <li>
-                                                    <a class="google-plus" href="#">
-                                                        <i class="fa fa-google-plus"></i>
+                                                    <a class="instagram" href="https://www.instagram.com/aroojev/">
+                                                        <i class="fa fa-instagram"></i>
                                                     </a>
                                                 </li>
-                                                <li>
-                                                    <a class="pinterest" href="#">
-                                                        <i class="fa fa-pinterest"></i>
-                                                    </a>
-                                                </li>
+                                                
                                             </ul>
                                         </div>
                                         <p class="single-info mb-0">
-                                            تگ ها: @Model.Product.Keywords
+                                            برچسب ها: @Model.Product.Keywords
                                         </p>
                                     </div>
                                 </div>

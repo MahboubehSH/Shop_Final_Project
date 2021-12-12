@@ -26,7 +26,7 @@ namespace _01_ShopFinalQuery.Query
                     BtnText = x.BtnText,
                     Heading = x.Heading,
                     Link = x.Link,
-                    Text = x.BtnText,
+                    Text = x.Text,
                     Title = x.Title
 
                 }).ToList();

@@ -25,13 +25,14 @@ namespace ShopManagement.Application
             if (_productRepository.Exists(x => x.Name == command.Name))
                 return operation.Failed(ApplicationMessages.DuplicatedRecord);
 
+            var slug = command.Slug.Slugify();
             var categorySlug = _productCategoryRepository.GetSlugById(command.CategoryId);
-            var path = $"{categorySlug}//{command.Slug}";
+            var path = $"{categorySlug}//{slug}";
             var picturePath = _fileUploader.Upload(command.Picture, path);
             var product = new Product(command.Name, command.Code,
                 command.ShortDescription,command.Description, picturePath,
                 command.PictureAlt, command.PictureTitle, command.CategoryId,
-                command.Slug, command.Keywords,
+                slug, command.Keywords,
                 command.MetaDescription);
             _productRepository.Create(product);
             _productRepository.SaveChanges();
@@ -47,11 +48,12 @@ namespace ShopManagement.Application
             if (_productRepository.Exists(x => x.Name == command.Name && x.Id != command.Id))
                 return operation.Failed(ApplicationMessages.DuplicatedRecord);
 
-            var path = $"{product.Category.Slug}/{command.Slug}";
+            var slug = command.Slug.Slugify();
+            var path = $"{product.Category.Slug}/{slug}";
             var picturePath = _fileUploader.Upload(command.Picture, path);
             product.Edit(command.Name, command.Code, command.ShortDescription, command.Description,picturePath ,
                 command.PictureAlt, command.PictureTitle, command.CategoryId,
-                command.Slug, command.Keywords,
+                slug, command.Keywords,
                 command.MetaDescription);
             _productRepository.SaveChanges();
             return operation.Succedded();

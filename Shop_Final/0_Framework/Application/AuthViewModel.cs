@@ -10,8 +10,7 @@ namespace _0_Framework.Application
         public string Fullname { get; set; }
         public string Username { get; set; }
         public List<int> Permissions { get; set; }
-        
-         public AuthViewModel()
+        public AuthViewModel()
         {
             
         }
@@ -24,5 +23,5 @@ namespace _0_Framework.Application
             Username = username;
             Permissions = permissions;
         }
-}
+    }
 }
