@@ -1,6 +1,5 @@
 ﻿@model _01_ShopFinalQuery.MenuModel
 @inject _0_Framework.Application.IAuthHelper _authHelper
-
 <div class="header-area header-sticky">
     <div class="container">
         <div class="row">
@@ -15,43 +14,43 @@
                         <nav>
                             <ul>
                                 <li>
-                                    <a asp-page="/Index">صفحه اصلی</a>
+                                    <a asp-page="/Index" style="font-size: 14px"><strong>صفحه اصلی</strong></a>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a>محصولات</a>
+                                    <a style="font-size: 14px"><strong>محصولات</strong></a>
                                     <ul class="sub-menu">
                                         @foreach (var category in Model.ProductCategories)
                                         {
                                             <li>
-                                                <a asp-page="./ProductCategory" asp-route-id="@category.Slug">@category.Name</a>
+                                                <a asp-page="./ProductCategory" asp-route-id="@category.Slug"><strong>@category.Name</strong></a>
                                             </li>
                                         }
                                     </ul>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a>مقالات</a>
+                                    <a style="font-size: 14px"><strong>مقالات</strong></a>
                                     <ul class="sub-menu">
                                         @foreach (var category in Model.ArticleCategories)
                                         {
                                             <li>
-                                                <a asp-page="./ArticleCategory" asp-route-id="@category.Slug">@category.Name</a>
+                                                <a asp-page="./ArticleCategory" asp-route-id="@category.Slug"><strong>@category.Name</strong></a>
                                             </li>
                                         }
                                     </ul>
                                 </li>
                                 <li>
-                                    <a asp-page="/Contact">تماس با ما</a>
+                                    <a asp-page="/Contact" style="font-size: 14px"><strong>تماس با ما</strong></a>
                                 </li>
                                 @if (_authHelper.IsAuthenticated())
                                 {
                                     <li>
-                                        <a asp-page="/Account" asp-page-handler="Logout">خروج</a>
+                                        <a asp-page="/Account" asp-page-handler="Logout" style="font-size: 14px"><strong>خروج</strong></a>
                                     </li>
                                 }
                                 else
                                 {
                                     <li>
-                                        <a asp-page="/Account">وورد / ثبت نام</a>
+                                        <a asp-page="/Account" style="font-size: 14px"><strong>وورد / ثبت نام</strong></a>
                                     </li>
                                 }
                             </ul>
@@ -90,7 +89,6 @@
                                             <span></span>
                                         </div>
                                     </a>
-
                                     <div class="settings-menu-wrapper" id="settings-menu-wrapper">
                                         <div class="single-settings-block">
                                             <h4 class="title">پروفایل من </h4>
@@ -103,32 +101,21 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        @*<div class="single-settings-block">
-                                                <h4 class="title">CURRENCY: USD </h4>
-                                                <ul>
-                                                    <li>
-                                                        <a href="javascript:void(0)">€ Euro</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">$ US Dollar</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="single-settings-block">
-                                                <h4 class="title">LANGUAGE: EN-GB </h4>
-                                                <ul>
-                                                    <li>
-                                                        <a href="javascript:void(0)">
-                                                            <img src="~/Theme/assets/img/icons/en-gb.png" alt=""> English
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">
-                                                            <img src="~/Theme/assets/img/icons/de-de.png" alt=""> Germany
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>*@
+                                        <div class="single-settings-block">
+                                                <h4 class="title">LANGUAGE: FA-EN </h4>
+                                            <ul>
+                                                <li>
+                                                    <a href="javascript:void(0)">
+                                                        <img src="~/Theme/assets/img/icons/IR_Icon.png" alt=""> Farsi
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)">
+                                                        <img src="~/Theme/assets/img/icons/en-gb.png" alt=""> English
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </li>

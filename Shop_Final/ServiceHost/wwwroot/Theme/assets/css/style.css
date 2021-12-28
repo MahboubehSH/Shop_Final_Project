@@ -65,7 +65,7 @@ body {
 	line-height: 1.4;
 	position: relative;
 	visibility: visible;
-	color: #707070;
+	color: black;
 	background-color: #fff;
 }
 
@@ -1524,7 +1524,7 @@ select {
 .footer-copyright-wrapper .copyright-text {
 	font-weight: 400;
 	line-height: 30px;
-	color: black;
+	color: white;
 }
 
 .footer-copyright-wrapper .copyright-text a {
@@ -2016,25 +2016,25 @@ select {
 }
 
 .hero-slider-content p.slider-title--small {
-	font-size: 14px;
+	font-size: 22px;
 	font-weight: 400;
 	line-height: 24px;
-	width: 550px;
+	width: 500px;
 	max-width: 100%;
 	margin-bottom: 60px;
 	color: #292929;
 }
 
 .hero-slider-content p.slider-title--big-bold {
-	font-size: 80px;
-	font-weight: 700;
+	font-size: 55px;
+	font-weight: 500;
 	line-height: 80px;
 	margin-bottom: 20px;
 	color: #292929;
 }
 
 .hero-slider-content p.slider-title--big-light {
-	font-size: 40px;
+	font-size: 35px;
 	font-weight: 300;
 	line-height: 40px;
 	margin-bottom: 0;
@@ -2048,9 +2048,9 @@ select {
 =============================================*/
 
 .hero-slider-button {
-	font-weight: 600;
+	font-weight: 400;
 	line-height: 20px;
-	padding: 20px 35px;
+	padding: 10px 25px;
 	-webkit-transition: .3s;
 	transition: .3s;
 	color: #292929;
@@ -2171,6 +2171,8 @@ select {
 =============================================*/
 
 .section-title-wrapper .section-title {
+    font-family: IranSans;
+    color: red;
 	font-size: 30px;
 	line-height: 30px;
 	margin-bottom: 20px;
@@ -2604,7 +2606,7 @@ select {
 	padding: 0 30px;
 	cursor: pointer;
 	text-transform: capitalize;
-	color: #707070;
+	color: black;
 	border-radius: 3px;
 	background: #f1f1f1;
 }
@@ -5931,13 +5933,15 @@ span.required {
 }
 
 .about-section-title h3 {
+	font-family: IranSans;
 	font-size: 24px;
-	font-weight: 700;
+    font-weight: 700;
 	margin-bottom: 23px;
 }
 
 .about-section-title p {
-	font-size: 12px;
+	font-family: IranSans;
+    font-size: 12px;
 	line-height: 20px;
 	max-width: 600px;
 }
@@ -7864,6 +7868,7 @@ h3.comment-counter {
 
 .about-section-title h3 {
 	font-size: 18px;
+	font-family: IranSans;
 	line-height: 24px;
 }
 
@@ -7906,6 +7911,7 @@ h3.comment-counter {
 
 .section-title-wrapper .section-title {
 	font-size: 25px;
+	font-family: IranSans;
 	line-height: 25px;
 }
 
