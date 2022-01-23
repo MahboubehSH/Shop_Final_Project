@@ -1,5 +1,14 @@
 ﻿@model _01_ShopFinalQuery.MenuModel
 @inject _0_Framework.Application.IAuthHelper _authHelper
+<div style="width: 100%; background-color: #0891f8; height: 40px; background-image: url(https://demo.webdigify.com/OPC01/OPC001/catalog/view/theme/Demo-Store/image/webdigify/top-bg.png)">
+    <div class="container">
+        <ul class="header-links pull-left">
+            <li><a href="#">arooj.e.v.co@gmail.com<i class="fa fa-envelope-o"></i></a></li>
+            <li><a href="#">989172402275+<i class="fa fa-phone"></i></a></li>
+            @*  <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>*@
+        </ul>
+     </div>
+</div>
 <div class="header-area header-sticky">
     <div class="container">
         <div class="row">
@@ -37,6 +46,9 @@
                                             </li>
                                         }
                                     </ul>
+                                </li>
+                                <li>
+                                    <a asp-page="/About" style="font-size: 14px"><strong>درباره ما</strong></a>
                                 </li>
                                 <li>
                                     <a asp-page="/Contact" style="font-size: 14px"><strong>تماس با ما</strong></a>
@@ -102,7 +114,7 @@
                                             </ul>
                                         </div>
                                         <div class="single-settings-block">
-                                                <h4 class="title">LANGUAGE: FA-EN </h4>
+                                            <h4 class="title">LANGUAGE: FA-EN </h4>
                                             <ul>
                                                 <li>
                                                     <a href="javascript:void(0)">
@@ -160,8 +172,6 @@
         </div>
     </div>
 </div>
-
-
 <div class="offcanvas-mobile-menu" id="offcanvas-mobile-menu">
     <a href="javascript:void(0)" class="offcanvas-menu-close" id="offcanvas-menu-close-trigger">
         <i class="ion-android-close"></i>
@@ -206,6 +216,9 @@
                         </ul>
                     </li>
                     <li class="">
+                        <a asp-page="">درباره شرکت</a>
+                    </li>
+                    <li class="">
                         <a asp-page="/Contact">تماس با ما</a>
                     </li>
                 </ul>
@@ -217,14 +230,6 @@
                         <li class="menu-item-has-children">
                             <a href="#">پروفایل من </a>
                         <ul class="sub-menu">
-                            @*<li>
-                                    <a asp-page="/Account">ثبت نام</a>
-                                </li>
-                                <li>
-                                    <a asp-page="/Account">ورود</a>
-                                </li>*@
-                            @*</ul>
-                           </li>*@
                             @if (_authHelper.IsAuthenticated())
                             {
                                 <li>

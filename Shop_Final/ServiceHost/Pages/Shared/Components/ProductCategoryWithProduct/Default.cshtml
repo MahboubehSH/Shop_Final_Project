@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title-wrapper text-center section-space--half">
-                    <h2 class="section-title"><strong>پیشنهادهای شگفت انگیز آروج</strong></h2>
+                    <h2 class="section-title"><strong>محصولات آروج</strong></h2>
                     <p class="section-subtitle">
                         <strong>از فرصت های تازه بهره مند شوید</strong>
                     </p>
@@ -20,7 +20,7 @@
                             @foreach (var category in Model)
                             {
                                 <a class="nav-item nav-link @(Model.First() == category ? "active" : "")" id="product-tab-@category.Id" data-toggle="tab"
-                                   href="#product-series-@category.Id" role="tab" aria-selected="true">@category.Name</a>
+                                   href="#product-series-@category.Id" role="tab" aria-selected="true"><strong>@category.Name</strong></a>
                             }
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                                                             </div>
                                                         }
                                                         <a asp-page="/Product" asp-route-id="@product.Slug">
-                                                            <img src="~/ProductPictures/@product.Picture" title="@product.PictureTitle" class="img-fluid"
+                                                            <img src="~/ProductPictures/@product.Picture"  title="@product.PictureTitle" class="img-fluid" style="border-radius: 20px;"
                                                                  alt="@product.PictureAlt">
                                                         </a>
                                                     </div>

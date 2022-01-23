@@ -20,13 +20,13 @@ namespace ShopManagement.Application.Contracts.Slide
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string Title { get; set; }
 
-        [Required(ErrorMessage = ValidationMessages.IsRequired)]
+        //[Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string Text { get; set; }
 
-        [Required(ErrorMessage = ValidationMessages.IsRequired)]
+        //[Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string Link { get; set; }
 
-        [Required(ErrorMessage = ValidationMessages.IsRequired)]
+        //[Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string BtnText { get; set; }
 
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
