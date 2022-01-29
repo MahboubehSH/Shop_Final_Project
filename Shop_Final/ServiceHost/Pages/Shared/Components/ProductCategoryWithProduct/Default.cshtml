@@ -1,5 +1,4 @@
 ﻿@model List<_01_ShopFinalQuery.Contracts.ProductCategory.ProductCategoryQueryModel>
-
 <div class="single-row-slider-tab-area section-space">
     <div class="container">
         <div class="row">
@@ -64,6 +63,13 @@
                                                             <img src="~/ProductPictures/@product.Picture"  title="@product.PictureTitle" class="img-fluid" style="border-radius: 20px;"
                                                                  alt="@product.PictureAlt">
                                                         </a>
+                                                        <div class="hover-icons">
+                                                            <a href="javascript:void(0)"><i class="ion-bag"></i></a>
+                                                            <a href="javascript:void(0)"><i class="ion-heart"></i></a>
+                                                            <a href="javascript:void(0)"><i class="ion-android-options"></i></a>
+                                                            <a href="javascript:void(0)" data-toggle="modal"
+                                                               data-target="#quick-view-modal-container"><i class="ion-android-open"></i></a>
+                                                        </div>
                                                     </div>
                                                     <div class="single-grid-product__content">
                                                         <div class="single-grid-product__category-rating">
@@ -74,7 +80,7 @@
                                                                 <i class="ion-android-star active"></i>
                                                                 <i class="ion-android-star active"></i>
                                                                 <i class="ion-android-star active"></i>
-                                                                <i class="ion-android-star active"></i>
+                                                                <i class="ion-android-star-outline"></i>
                                                                 <i class="ion-android-star-outline"></i>
                                                             </span>
                                                         </div>

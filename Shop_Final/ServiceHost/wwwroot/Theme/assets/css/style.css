@@ -69,8 +69,15 @@ body {
 	background-color: #fff;
 }
 .main-layout {
-	background-image: url('/Theme/assets/img/backgrounds/body_bg.png');
+	background-image: url('/Theme/assets/img/backgrounds/3418562-scaled.jpg');
+	background-image: url('/Theme/assets/img/backgrounds/back-min-2-scaled.jpg');
 	background-repeat: no-repeat;
+    position: relative;
+    /*background: url(https://www.aryatehran.com/wp-content/uploads/2020/12/back-min-2-scaled.jpg);*/
+    background-size: cover;
+    background-position: 30%;
+    padding: 20px 0;
+    direction: initial;
 }
 
 body.grey-bg {
@@ -2627,6 +2634,10 @@ select {
 .single-slider-post__image a:hover img {
 	opacity: .85;
 }
+
+/*.single-grid-product__image a:hover img {
+	opacity: .85;
+}*/
 
 .single-slider-post__date-sticker {
 	position: absolute;
@@ -8411,4 +8422,151 @@ from {
 		border-radius: 26px;
 		transition: ease-in all 0.5s;
     }
+
+.nws-section.layouts-action-buttons-section {
+	display: block;
+	box-sizing: border-box;
+	font-family: IRANSans,tahoma,'Cabin',sans-serif;
+	line-height: 1.5;
+	color: #727273;
+	font-size: 14px;
+	-webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+}
+
+.nws-section.layouts-action-buttons-section .action-buttons-wrapper {
+    display: flex;
+    z-index: 1050;
+    align-items: center;
+    position: fixed;
+    bottom: 5px;
+    right: 15px;
+	text-align: -webkit-match-parent;
+}
+
+.nws-section.layouts-action-buttons-section .action-buttons-wrapper.directionUp {
+		flex-direction: column-reverse;
+		text-align: -webkit-match-parent;
+}
+
+.nws-section.layouts-action-buttons-section .action-buttons-wrapper .action-buttons-root {
+    display: block;
+    position: relative;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.action-buttons-root.tada {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    background-color: #98cb00;
+    color: #fff;
+    font-size: 25px;
+    line-height: 64px;
+    bottom: 110px;
+    -webkit-animation-name: tada;
+    animation-name: tada;
+}
+.action-buttons-root.tada.animated {
+		-webkit-animation-duration: 1s;
+		-webkit-animation-fill-mode: both;
+		animation-duration: 1s;
+		animation-fill-mode: both;
+	}
+
+.action-buttons-root.tada.animated.infinite {
+	-webkit-animation-iteration-count: infinite;
+	animation-iteration-count: infinite;
+}
+
+.action-buttons-root.tada.animate.infinited.slow {
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+}
+
+.nws-section.layouts-action-buttons-section .action-buttons-wrapper .action-buttons-root a:hover {
+    text-decoration: none;
+    transition: all .4s ease-in-out;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.nws-section.layouts-action-buttons-section .action-buttons-wrapper .action-buttons-root i.icon {
+	transition: transform 250ms cubic-bezier(.4,0,.2,1) 0s,opacity 250ms cubic-bezier(.4,0,.2,1) 0s;
+	font-style: italic;
+}
+
+.nws-section.layouts-action-buttons-section .action-buttons-wrapper .action-buttons-root .icon {
+    display: inline-block;
+}
+
+.nws-section.layouts-action-buttons-section .action-buttons-wrapper .action-buttons-root .label {
+	display: inline-block;
+	color: #fff;
+	background-color: rgba(0,0,0,.5);
+	border-radius: 5px;
+	padding: 0 5px;
+	line-height: 25px;
+	font-size: 12px;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+	position: absolute;
+	top: 50%;
+	right: calc(100% + 10px);
+	bottom: auto;
+	left: auto;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: baseline;
+	font-weight: 700;
+    box-sizing: border-box;
+}
+
+.nws-section.layouts-action-buttons-section .action-buttons-wrapper .action-buttons-inner-wrapper {
+    pointer-events:none;
+    display: flex;
+    display: -webkit-flex;
+    -webkit-flex: 0 1 auto;
+    flex-direction: column;
+    padding-bottom: 48px;
+    margin-bottom: 80px;
+}
+
+.nws-section.layouts-action-buttons-section .action-buttons-wrapper .action-buttons-inner-wrapper .action-button {
+		display: block;
+		position: relative;
+		color: rgba(0,0,0,.54);
+		margin: 8px;
+		width: 40px;
+		height: 40px;
+		line-height: 40px;
+		text-align: center;
+		border-radius: 50%;
+		padding: 0;
+		font-size: 20px;
+		min-width: 0;
+		box-shadow: 0 3px 5px -1px rgba(0,0, 0,.20), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0, 0,.12);
+        box-sizing: border-box;
+		transition: transform .2s cubic-bezier(.4,0,.2,1) 0s,opacity .8s;
+		background-color: #fff;
+		opacity: 0;
+		transform: scale(0);
+}
+
+.mdi:before, .mdi-set {
+	display: inline-block;
+	font: normal normal normal 24px/1 "Material Design Icons";
+	font-size: inherit;
+	text-rendering: auto;
+	line-height: inherit;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
 

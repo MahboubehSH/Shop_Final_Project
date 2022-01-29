@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 
 namespace ServiceHost.Pages
 {
-    public class ContactModel : PageModel
+    public class AboutModel : PageModel
     {
         
         public void OnGet()
