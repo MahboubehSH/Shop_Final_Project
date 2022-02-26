@@ -28,7 +28,6 @@
         </div>
     </div>
 </div>
-
 <div class="page-content-area">
     <div class="container">
         <div class="row">
@@ -124,12 +123,7 @@
                                                 <i class="ion-android-star active"></i>
                                                 <i class="ion-android-star-outline"></i>
                                             </span>
-
-                                            @*<span class="review-count">
-                                                <a href="#">(2 reviews)</a> | <a href="#">نظر دهید</a>
-                                            </span>*@
                                         </div>
-
                                         <p class="single-grid-product__price" style="direction: rtl">
                                             @if (Model.Product.HasDiscount)
                                             {
@@ -142,7 +136,6 @@
                                             }
 
                                         </p>
-
                                         <p class="single-info">@Model.Product.Code<span class="value">:کد محصول</span> </p>
                                         <p class="single-info">
                                             @if (Model.Product.IsInStock)
@@ -154,7 +147,6 @@
                                                 <span class="text-danger">محصول ناموجود</span>
                                             }
                                         </p>
-
                                         <p class="product-description">
                                             @Model.Product.ShortDescription
                                         </p>
@@ -162,7 +154,6 @@
                                         {
                                             <div class="product-countdown" data-countdown="@Model.Product.DiscountExpireDate"></div>
                                         }
-
                                         <div class="product-actions">
                                             <div class="quantity-selection">
                                                 <label>تعداد</label>
@@ -174,7 +165,6 @@
                                                 </a>
                                             </div>
                                         </div>
-
                                         <div class="social-share-buttons mt-20">
                                             <h5>این محصول را به اشتراک بگذارید</h5>
                                             <ul>
@@ -184,16 +174,15 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a class="facebook" href="#">
-                                                        <i class="fa fa-facebook"></i>
-                                                    </a> 
+                                                    <a class="google-plus" href="#">
+                                                        <i class="fa fa-google-plus"></i>
+                                                    </a>
                                                 </li>
                                                 <li>
                                                     <a class="instagram" href="https://www.instagram.com/aroojev/">
                                                         <i class="fa fa-instagram"></i>
                                                     </a>
                                                 </li>
-                                                
                                             </ul>
                                         </div>
                                         <p class="single-info mb-0">
@@ -227,68 +216,17 @@
                                             <div class="tab-pane fade" id="review" role="tabpanel"
                                                  aria-labelledby="review-tab">
                                                 <div class="product-rating-wrap">
-                                                    @*<div class="rating-list">
-                                                            <div class="sin-list float-right">
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <span>(5)</span>
-                                                            </div>
-                                                            <div class="sin-list float-right">
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                                <span>(3)</span>
-                                                            </div>
-                                                            <div class="sin-list float-right">
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                                <span>(1)</span>
-                                                            </div>
-                                                            <div class="sin-list float-right">
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                                <span>(0)</span>
-                                                            </div>
-                                                            <div class="sin-list float-right">
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                                <span>(0)</span>
-                                                            </div>
-                                                        </div>*@
                                                     @foreach (var comment in Model.Product.Comments)
                                                     {
                                                         <div class="ratings-wrapper">
                                                             <div class="sin-ratings">
                                                                 <div class="rating-author">
                                                                     <h3>@comment.Name</h3>
-                                                                    @*<div class="rating-star">
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <span>(5)</span>
-                                                                        </div>*@
                                                                 </div>
                                                                 <p>@comment.Message</p>
                                                             </div>
                                                         </div>
                                                     }
-
                                                     <div class="rating-form-wrapper fix">
                                                         <h3>نظر خود را با ما به اشتراک بگذارید</h3>
                                                         <form method="post">

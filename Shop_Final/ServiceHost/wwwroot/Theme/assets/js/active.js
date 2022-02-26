@@ -41,10 +41,16 @@
 		//code for scroll top
 
 		if (scroll >= 400) {
-			$('#scroll-top').fadeIn();
+			$('#back-top').fadeIn();
 		} else {
-			$('#scroll-top').fadeOut();
-		}
+			$('#back-top').fadeOut();
+        }
+
+        if (scroll >= 400) {
+            $('#back-top').fadeIn();
+        } else {
+            $('#back-top').fadeOut();
+        }
 
 	});
 
@@ -53,7 +59,7 @@
 
 	/*----------  Scroll to top  ----------*/
 
-	$('#scroll-top').on('click', function () {
+	$('#back-top').on('click', function () {
 		$('html,body').animate({
 			scrollTop: 0
 		}, 2000);

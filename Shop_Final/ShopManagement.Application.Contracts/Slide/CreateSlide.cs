@@ -8,16 +8,16 @@ namespace ShopManagement.Application.Contracts.Slide
     {
         public IFormFile Picture { get; set; }
 
-        [Required(ErrorMessage = ValidationMessages.IsRequired)]
+        //[Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string PictureAlt { get; set; }
 
-        [Required(ErrorMessage = ValidationMessages.IsRequired)]
+        //[Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string PictureTitle { get; set; }
 
-        [Required(ErrorMessage = ValidationMessages.IsRequired)]
+        //[Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string Heading { get; set; }
 
-        [Required(ErrorMessage = ValidationMessages.IsRequired)]
+        //[Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string Title { get; set; }
 
         //[Required(ErrorMessage = ValidationMessages.IsRequired)]
@@ -29,7 +29,7 @@ namespace ShopManagement.Application.Contracts.Slide
         //[Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string BtnText { get; set; }
 
-        [Required(ErrorMessage = ValidationMessages.IsRequired)]
+        //[Required(ErrorMessage = ValidationMessages.IsRequired)]
         public bool IsRemoved { get; set; }
     }
 }

@@ -4,7 +4,7 @@
     font-family: 'IranSans';
 }
 
-.hero-slider-content { text-align: right; }
+.hero-slider-content { text-align: left; }
 
 .hero-slider-area { direction: ltr; }
 
@@ -62,7 +62,7 @@
     right: unset;
 }
 
-.copyright-social-wrapper .copyright-social li:last-child { margin-right: 40px; }
+/*.copyright-social-wrapper .copyright-social li:last-child { margin-right: 40px; }*/
 
 .navigation-menu-wrapper .sub-menu {
     left: unset;

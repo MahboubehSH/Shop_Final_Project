@@ -30,7 +30,11 @@ function addToCart(id, name, price, picture) {
 
 function updateCart() {
     let products = $.cookie(cookieName);
-    products = JSON.parse(products);
+    if (products === undefined) {
+        products = [];
+    } else {
+        products = JSON.parse(products);
+    }
     $("#cart_items_count").text(products.length);
     const cartItemsWrapper = $("#cart_items_wrapper");
     cartItemsWrapper.html('');

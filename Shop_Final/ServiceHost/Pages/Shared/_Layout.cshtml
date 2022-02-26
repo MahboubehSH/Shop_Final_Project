@@ -44,35 +44,13 @@
         </form>
     </div>
 </div>
-<div id="scroll-top">
-    <span>برو بالا</span><i class="ion-chevron-right"></i><i class="ion-chevron-right"></i>
-</div>
-
-
+<div id="back-top" class="show"></div>
 <section class="nws-section layouts-action-buttons-section">
     <div class="action-buttons-wrapper directionUp">
         <a class="action-buttons-root tada animated infinite slow" href="https://www.whatsapp.com/"
            rel="nofollow" target="_blank">
-            <i class="ion-android-phone-portrait"></i>
-            <span class="label">با ما در تماس باشید</span>
+            <i class="ion-social-whatsapp"></i>
         </a>
-        <div class="action-buttons-inner-wrapper">
-            <a class="action-button" href="http://wa.me.989387537443" rel="nofollow" target="_blank"
-               style="transition-delay: 90ms;">
-                <i class="ion-social-whatsapp" ></i>
-                <span class="label">واتس آپ</span>
-            </a>
-            <a class="action-button" href="Tel:09172402275" rel="nofollow" target="_blank"
-               style="transition-delay: 60ms;">
-                <i class="icon mdi mdi-cellphone-iphone"style="content: '\F120'"></i>
-                <span class="label">موبایل 2402275-0917</span>
-            </a>
-            <a class="action-button" href="Email:info@arooj.ir" rel="nofollow" target="_blank"
-               style="transition-delay: 30ms;">
-                <i class="icon mdi mdi-phone"style="content: '\F3F2'"></i>
-                <span class="label">info@arooj.ir</span>
-            </a>
-        </div>
     </div>
 </section>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -83,36 +61,6 @@
 
 <script>
     $(document).ready(function () {
-        function updateCart() {
-            const cookieName = "cart-items";
-            let products = $.cookie(cookieName);
-            products = JSON.parse(products);
-            $("#cart_items_count").text(products.length);
-            const cartItemsWrapper = $("#cart_items_wrapper");
-            cartItemsWrapper.html('');
-            products.forEach(x => {
-                const product = `<div class="single-cart-item">
-                            <a href="javascript:void(0)" class="remove-icon" onclick="removeFromCart('${x.id}')">
-                                <i class="ion-android-close"></i>
-                            </a>
-                            <div class="image">
-                                <a href="single-product.html">
-                                    <img src="/ProductPictures/${x.picture}"
-                                         class="img-fluid" alt="">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <p class="product-title">
-                                    <a href="single-product.html">محصول: ${x.name}</a>
-                                </p>
-                                <p class="count">تعداد: ${x.count}</p>
-                                <p class="count">قیمت واحد: ${x.unitPrice}</p>
-                            </div>
-                        </div>`;
-
-                cartItemsWrapper.append(product);
-            });
-        }
         updateCart();
     });
 </script>

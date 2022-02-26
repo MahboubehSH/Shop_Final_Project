@@ -48,14 +48,16 @@
                                             }
                                         </div>
                                         <a asp-page="/Product" asp-route-id="@product.Slug">
-                                            <img src="~/ProductPictures/@product.Picture" class="img-fluid" alt="@product.PictureAlt" title="@product.PictureTitle"style="border-radius: 20px;">
+                                            <img src="~/ProductPictures/@product.Picture" class="img-fluid" alt="@product.PictureAlt" title="@product.PictureTitle"
+                                                 style="border-radius: 20px;box-shadow: 0 0 5px #007bff; margin-top: 5px">
                                         </a>
                                         <div class="hover-icons">
                                             <a href="javascript:void(0)"><i class="ion-bag"></i></a>
-                                            <a href="javascript:void(0)"><i class="ion-heart"></i></a>
+                                            @*<a href="javascript:void(0)"><i class="ion-heart"></i></a>*@
                                             <a href="javascript:void(0)"><i class="ion-android-options"></i></a>
-                                            <a href="javascript:void(0)" data-toggle="modal"
-                                               data-target="#quick-view-modal-container"><i class="ion-android-open"></i></a>
+                                            <a asp-page="/Product" asp-route-id="@product.Slug" target="_blank" rel="noopener noreferrer">
+                                                <i class="ion-android-open"></i>
+                                            </a>
                                         </div>
                                     </div>
                                     <div class="single-grid-product__content">
