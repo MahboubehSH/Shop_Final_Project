@@ -3,9 +3,8 @@
 <div style="width: 100%; background-color: #0891f8; height: 40px; background-image: url(https://demo.webdigify.com/OPC01/OPC001/catalog/view/theme/Demo-Store/image/webdigify/top-bg.png)">
     <div class="container">
         <ul class="header-links pull-left">
-            <li><a href="#">arooj.e.v.co@gmail.com<i class="fa fa-envelope-o"></i></a></li>
-            <li><a href="#">989172402275+<i class="fa fa-phone"></i></a></li>
-            @*  <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>*@
+            <li><a href="mailto:arooj.e.v.co@gmail.com">arooj.e.v.co@gmail.com<i class="fa fa-envelope-o"></i></a></li>
+            <li><a href="tel://09172402275">989172402275+<i class="fa fa-phone"></i></a></li>
         </ul>
      </div>
 </div>
@@ -23,7 +22,7 @@
                         <nav>
                             <ul>
                                 <li>
-                                    <a asp-page="/Index" style="font-size: 14px"><strong>صفحه اصلی</strong></a>
+                                    <a asp-page="/Index" style="font-size: 14px"><strong>خانه</strong></a>
                                 </li>
                                 <li class="menu-item-has-children">
                                     <a style="font-size: 14px"><strong>محصولات</strong></a>
@@ -106,7 +105,7 @@
                                             <h4 class="title">پروفایل من </h4>
                                             <ul>
                                                 <li>
-                                                    <a asp-page="/Account">ثبت نام</a>
+                                                    <a asp-page="/Register">ثبت نام</a>
                                                 </li>
                                                 <li>
                                                     <a asp-page="/Account">ورود</a>
@@ -150,10 +149,18 @@
                                     <ul class="icon-list justify-content-end">
                                         <li>
                                             <div class="header-cart-icon">
-                                                <a asp-page="/Cart">
+                                                <a href="#" id="minicart-trigger_mobile">
                                                     <i class="ion-bag"></i>
-                                                    <span class="counter">3</span>
+                                                    <span class="counter" id="cart_items_count_mobile">0</span>
                                                 </a>
+                                                <div class="mini-cart" id="mini-cart_mobile">
+                                                    <div class="cart-items-wrapper ps-scroll" id="cart_items_wrapper_mobile">
+
+                                                    </div>
+                                                    <div class="cart-buttons">
+                                                        <a asp-page="/Cart">مشاهده سبد خرید</a>
+                                                    </div>
+                                                </div> 
                                             </div>
                                         </li>
                                         <li>
@@ -191,7 +198,7 @@
             <nav class="offcanvas-navigation">
                 <ul>
                     <li class="">
-                        <a asp-page="/Index">صفحه اصلی</a>
+                        <a asp-page="/Index">خانه</a>
                     </li>
                     <li class="menu-item-has-children">
                         <a>محصولات</a>
@@ -216,35 +223,67 @@
                         </ul>
                     </li>
                     <li class="">
-                        <a asp-page="">درباره شرکت</a>
+                        <a asp-page="/AboutUs">درباره ما</a>
                     </li>
                     <li class="">
                         <a asp-page="/Contact">تماس با ما</a>
                     </li>
+                    @*@if (_authHelper.IsAuthenticated())
+                    {
+                        <li>
+                            <a asp-page="/Account" asp-page-handler="Logout">خروج</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a asp-page="/Account">وورد / ثبت نام</a>
+                        </li>
+                    }*@
                 </ul>
             </nav>
-
             <div class="offcanvas-settings">
                 <nav class="offcanvas-navigation">
                     <ul>
-                        <li class="menu-item-has-children">
-                            <a href="#">پروفایل من </a>
-                        <ul class="sub-menu">
-                            @if (_authHelper.IsAuthenticated())
-                            {
-                                <li>
-                                    <a asp-page="/Account" asp-page-handler="Logout">خروج</a>
-                                </li>
-                            }
-                            else
-                            {
-                                <li>
-                                    <a asp-page="/Account">وورد / ثبت نام</a>
-                                </li>
-                            }
-                        </ul>
+                    <li class="menu-item-has-children">
+                    @*<div class="settings-menu-wrapper" id="settings-menu-wrapper">
+                        <div class="single-settings-block">*@
+                            <a>پروفایل من </a>
+                            <ul>
+                                @if (_authHelper.IsAuthenticated())
+                                {
+                                    <li>
+                                        <a asp-page="/Account" asp-page-handler="Logout">خروج</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a asp-page="/Account">ورود</a>
+                                    </li>
+                                    <li><a asp-page="/Register">ثبت نام</a></li>
+
+                                }
+                            </ul>
+                        @*</div>*@
                         </li>
-                    </ul>
+                        </ul>
+                        <div class="single-settings-block">
+                            <h6 class="title">LANGUAGE: FA-EN </h6>
+                            <ul>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <img src="~/Theme/assets/img/icons/IR_Icon.png" alt=""> Farsi
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <img src="~/Theme/assets/img/icons/en-gb.png" alt=""> English
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    @*</div>*@
                 </nav>
             </div>
 
@@ -255,31 +294,26 @@
                             <li>
                                 <i class="ion-android-phone-portrait"></i>
                                 <a href="tel://09172402275">
-                                   +989172402275
+                                    +989172402275
                                 </a>
                             </li>
                             <li>
-                                <i class="ion-android-mail"></i> <a href="mailto:arooj.e.v.co@gmail.com">arooj.e.v.co@gmail.com</a>
+                                <i class="ion-android-mail"></i> 
+                                <a href="mailto:arooj.e.v.co@gmail.com">arooj.e.v.co@gmail.com</a>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <!--Off Canvas Widget Social Start-->
                 <div class="off-canvas-widget-social">
-                    <a href="#" title="Facebook">
-                        <i class="fa fa-facebook"></i>
+                    <a href="https://www.instagram.com/aroojev/" title="Instagram">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+                    <a href="#" title="Whatsapp">
+                        <i class="fa fa-whatsapp"></i>
                     </a>
                     <a href="#" title="Twitter">
                         <i class="fa fa-twitter"></i>
-                    </a>
-                    <a href="#" title="LinkedIn">
-                        <i class="fa fa-linkedin"></i>
-                    </a>
-                    <a href="#" title="Youtube">
-                        <i class="fa fa-youtube-play"></i>
-                    </a>
-                    <a href="#" title="Vimeo">
-                        <i class="fa fa-vimeo-square"></i>
                     </a>
                 </div>
                 <!--Off Canvas Widget Social End-->

@@ -35,6 +35,9 @@ function updateCart() {
     } else {
         products = JSON.parse(products);
     }
+    $("#cart_items_count_mobile").text(products.length);
+    const cartItemsWrapper_mobile = $("#cart_items_wrapper_mobile");
+    cartItemsWrapper_mobile.html('');
     $("#cart_items_count").text(products.length);
     const cartItemsWrapper = $("#cart_items_wrapper");
     cartItemsWrapper.html('');
@@ -59,6 +62,7 @@ function updateCart() {
                         </div>`;
 
         cartItemsWrapper.append(product);
+        cartItemsWrapper_mobile.append(product);
     });
 }
 

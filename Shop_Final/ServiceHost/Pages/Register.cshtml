@@ -1,0 +1,190 @@
+﻿@page
+@model ServiceHost.Pages.RegisterModel
+@{
+    ViewData["Title"] = "ثبت نام";
+}
+<div class="breadcrumb-area section-space--half">
+    <div class="container wide">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-wrapper breadcrumb-bg">
+                    <div class="breadcrumb-content">
+                        <h2 class="breadcrumb-content__title">ایجاد حساب کاربری جدید</h2>
+                        <ul class="breadcrumb-content__page-map">
+                            <li><a asp-page="/Index">صفحه اصلی</a></li>
+                            <li class="active">ثبت نام</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page-content-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="page-wrapper">
+                    <div class="page-content-wrapper">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                                @if (Model.RegisterMessage != null)
+                                {
+                                    <div class="alert alert-danger">@Model.RegisterMessage</div>
+                                }
+                                else
+                                {
+                                    <div class="alert alert-danger">لطفا مشخصات خود را وارد نمائید</div>
+                                }
+                                <form method="post" asp-page-handler="Register" id="registerForm">
+                                    <div class="login-form">
+                                        <h4 class="login-title">ایجاد حساب کاربری جدید</h4>
+                                        <div class="row" style="row-gap: 50px">
+                                            <div class="col-md-6 col-12 mb-20">
+                                                <label class="control-label">نام و نام خانوادگی</label>
+                                                <input type="text" name="fullname" id="fullname"
+                                                       title="نام و نام خانوادگی نباید خالی باشد و فقط شامل حروف باشد."
+                                                       placeholder="نام و نام خانوادگی" required>
+                                            </div>
+                                            <div class="col-md-6 col-12 mb-20">
+                                                <label>نام کاربری</label>
+                                                <input id="field_username" 
+                                                       title="نام کاربری نباید خالی باشد و فقط شامل حروف، اعداد و زیرخط باشد." 
+                                                       name="username" type="text" placeholder="نام کاربری" required
+                                                       pattern="\w+">
+                                            </div>
+                                            <div class="col-md-6 col-12 mb-20">
+                                                <label>پست الکترونیکی</label>
+                                                <input name="email" type="email" placeholder="پست الکترونیکی" 
+                                                       title="پست الکترونیک نباید خالی باشدو یک پست الکترونیک معتبر باشد."
+                                                       required>
+                                            </div>
+                                            <div class="col-md-6 mb-20">
+                                                <label >تلفن همراه</label>
+                                                <input name="Mobile" type="tel" placeholder="تلفن همراه" 
+                                                       title="تلفن همراه نباید خالی باشد و شامل 11 رقم باشد."
+                                                       minlength="11" maxlength="11" required>
+                                            </div>
+                                            <div class="col-md-6 mb-20">
+                                                <label >کلمه عبور</label>
+                                                <input id="field_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="password"
+                                                       title="رمز عبور باید حداقل دارای 6 کاراکتر، از جمله حروف بزرگ/کوچک و اعداد باشد."  
+                                                       type="password" placeholder="کلمه عبور" required>
+                                            </div>
+                                            <div class="col-md-6 mb-20">
+                                                <label>تایید کلمه عبور</label>
+                                                <input name="pwd2" type="password" placeholder="تایید کلمه عبور" 
+                                                       id="field_pwd2" title="لطفاً رمز عبور خود را تکرار کنید." 
+                                                       required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" >
+                                            </div>
+
+                                            <div class="col-12" style="margin-right: 400px;">
+                                                <button class="register-button mt-0">ثبت نام</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        // JavaScript form validation
+
+        var checkPassword = function (str) {
+            var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+            return re.test(str);
+        };
+
+        var checkForm = function (e) {
+            if (this.username.value == "") {
+                alert("خطا: نام کاربری نمی تواند خالی باشد!");
+                this.username.focus();
+                e.preventDefault(); // equivalent to return false
+                return;
+            }
+            re = /^\w+$/;
+            if (!re.test(this.username.value)) {
+                alert("خطا: نام کاربری باید فقط شامل حروف، اعداد و زیرخط باشد!");
+                this.username.focus();
+                e.preventDefault();
+                return;
+            }
+            if (this.password.value != "" && this.password.value == this.pwd2.value) {
+                if (!checkPassword(this.password.value)) {
+                    alert("رمزی که وارد کرده اید معتبر نیست!");
+                    this.password.focus();
+                    e.preventDefault();
+                    return;
+                }
+            } else {
+                alert("خطا: لطفاً بررسی کنید که رمز عبور خود را وارد کرده و تأیید کرده اید!");
+                this.password.focus();
+                e.preventDefault();
+                return;
+            }
+            alert("اطلاعات شما با موفقیت ارسال گردید.");
+        };
+
+        var myForm = document.getElementById("registerForm");
+        myForm.addEventListener("submit", checkForm, true);
+
+        // HTML5 form validation
+
+        var supports_input_validity = function () {
+            var i = document.createElement("input");
+            return "setCustomValidity" in i;
+        }
+
+        if (supports_input_validity()) {
+            var usernameInput = document.getElementById("field_username");
+            usernameInput.setCustomValidity(usernameInput.title);
+
+            var passwordInput = document.getElementById("field_password");
+            passwordInput.setCustomValidity(passwordInput.title);
+
+            var pwd2Input = document.getElementById("field_pwd2");
+
+            // input key handlers
+
+            usernameInput.addEventListener("keyup", function (e) {
+                usernameInput.setCustomValidity(this.validity.patternMismatch ? usernameInput.title : "");
+            }, false);
+
+            passwordInput.addEventListener("keyup", function (e) {
+                this.setCustomValidity(this.validity.patternMismatch ? passwordInput.title : "");
+                if (this.checkValidity()) {
+                    pwd2Input.pattern = RegExp.escape(this.value);
+                    pwd2Input.setCustomValidity(pwd2Input.title);
+                } else {
+                    pwd2Input.pattern = this.pattern;
+                    pwd2Input.setCustomValidity("");
+                }
+            }, false);
+
+            pwd2Input.addEventListener("keyup", function (e) {
+                this.setCustomValidity(this.validity.patternMismatch ? pwd2Input.title : "");
+            }, false);
+
+        }
+
+    }, false);
+
+</script>
+<script type="text/javascript">
+
+    // polyfill for RegExp.escape
+    if(!RegExp.escape) {
+        RegExp.escape = function(s) {
+            return String(s).replace(/[\\^$*+?.()|[\]{}]/g, '\\$&');
+        };
+    }
+
+</script>

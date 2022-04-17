@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,14 +27,12 @@ namespace ServiceHost
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddHttpContextAccessor();
@@ -58,6 +57,14 @@ namespace ServiceHost
                 options.CheckConsentNeeded = context => true;
                 //options.MinimumSameSitePolicy = SameSiteMode.None;
                 options.MinimumSameSitePolicy = SameSiteMode.Lax;
+            });
+
+            services.AddMvc().AddSessionStateTempDataProvider();
+            services.AddSession();
+
+            services.Configure<CookieTempDataProviderOptions>(options =>
+            {
+                options.Cookie.Name = "MyTempDataCookie";
             });
 
 
@@ -89,7 +96,8 @@ namespace ServiceHost
             });
 
             services.AddCors(option => option.AddPolicy("MyPolicy", builder
-                => builder.WithOrigins("https://localhost:5002")
+                => builder
+                    .WithOrigins("https://localhost:5002")
                     .AllowAnyHeader()
                     .AllowAnyMethod()));
 
@@ -108,7 +116,6 @@ namespace ServiceHost
                 .AddNewtonsoftJson();
         } 
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline .
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -117,8 +124,8 @@ namespace ServiceHost
             }
             else
             {
-                app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseDeveloperExceptionPage();
+                //app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
 
@@ -133,12 +140,15 @@ namespace ServiceHost
             app.UseRouting();
 
             app.UseAuthorization();
+
             app.UseCors("MyPolicy");
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
-                endpoints.MapDefaultControllerRoute();
+                //endpoints.MapDefaultControllerRoute();
                 endpoints.MapControllers();
             });
         }

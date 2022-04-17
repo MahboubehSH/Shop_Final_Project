@@ -27,8 +27,4 @@
     <ProjectReference Include="..\ShopManagement.Presentation.Api\ShopManagement.Presentation.Api.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\ProductPictures\ربات-عنکبوت\" />
-  </ItemGroup>
-
 </Project>

@@ -1,4 +1,5 @@
 ﻿using _0_Framework.Application;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using AccountManagement.Application.Contracts.Account;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -7,34 +8,38 @@ namespace ServiceHost.Pages
 {
     public class AccountModel : PageModel
     {
-        //[TempData]
-        public string LoginMessage { get; set; }
-
         [TempData]
-        public string RegisterMessage { get; set; }
-
-        public OperationResult Result;
+        public string LoginMessage { get; set; }
         
+        //public OperationResult Result;
+        //public string LoginMessage => (string)TempData[nameof(LoginMessage)];
 
         private readonly IAccountApplication _accountApplication;
 
         public AccountModel(IAccountApplication accountApplication)
         {
             _accountApplication = accountApplication;
+            //Result = new OperationResult();
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            return Page();
+            //LoginMessage = (string)TempData["LoginMessage"];
         }
 
-        public IActionResult OnPost(Login command)
+        public IActionResult OnPostLogin(Login command)
         {
-             Result = _accountApplication.Login(command);
-            if (Result.IsSuccedded)
+          var result = _accountApplication.Login(command);
+            if (result.IsSuccedded)
                 return RedirectToPage("/Index");
 
-            LoginMessage = Result.Message;
-            return RedirectToPage("/Account");
+            LoginMessage = result.Message;
+            //LoginMessage = ".نام کاربری یا رمز عبور اشتباه است";
+            //TempData["LoginMessage"] = result.Message;
+            //TempData.Keep("LoginMessage");
+            //return RedirectToPage("/Account") ;
+            return Page();
         }
 
         public IActionResult OnGetLogout()
@@ -43,13 +48,9 @@ namespace ServiceHost.Pages
             return RedirectToPage("/Index");
         }
 
-        public IActionResult OnPostRegister(RegisterAccount command)
+        public IActionResult OnGetGoToRegister()
         {
-            var result = _accountApplication.Register(command);
-            if (result.IsSuccedded)
-                return RedirectToPage("/Account");
-            RegisterMessage = result.Message;
-            return RedirectToPage("/Account");
+            return RedirectToPage("/Register");
         }
     }
 }

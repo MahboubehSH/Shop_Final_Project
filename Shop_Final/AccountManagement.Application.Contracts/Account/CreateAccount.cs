@@ -18,6 +18,9 @@ namespace AccountManagement.Application.Contracts.Account
         public string Password { get; set; }
 
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
+        public string Email { get; set; }
+
+        [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string Mobile { get; set; }
 
         public long RoleId { get; set; }
