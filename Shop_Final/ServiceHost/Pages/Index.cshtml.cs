@@ -14,7 +14,7 @@ namespace ServiceHost.Pages
 
         public void OnGet()
         {
-            //_emailService.SendEmail("ارتعاش الکترونیک آروج", "Hello <br/> Welcome to Arooj.E.V", "m.heidary1985@gmail.com");
+            _emailService.SendEmail("ارتعاش الکترونیک آروج", "Hello <br/> Welcome to Arooj.E.V", "f.shabani1988@gmail.com");
         }
     }
 }

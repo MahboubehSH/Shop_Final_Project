@@ -34,7 +34,12 @@ namespace ShopManagement.Application
             return order.Id;
         }
 
-        public void PaymentSucceeded(long orderId , long refId)
+        public double GetAmountBy(long id)
+        {
+            return _orderRepository.GetAmountBy(id);
+        }
+
+        public string PaymentSucceeded(long orderId , long refId)
         {
             var order = _orderRepository.Get(orderId);
             order.PaymentSucceeded(refId);
@@ -43,6 +48,7 @@ namespace ShopManagement.Application
             order.SetIssueTrackingNo(issueTrackingNo);
             //reduce OrderItems From Inventory
             _orderRepository.SaveChanges();
+            return issueTrackingNo;
 
         }
     }

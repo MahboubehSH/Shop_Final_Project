@@ -93,16 +93,12 @@
     </div>
 </div>
 <script type="text/javascript">
-
     document.addEventListener("DOMContentLoaded", function () {
-
-        // JavaScript form validation
 
         var checkPassword = function (str) {
             var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
             return re.test(str);
         };
-
         var checkForm = function (e) {
             if (this.username.value == "") {
                 alert("خطا: نام کاربری نمی تواند خالی باشد!");
@@ -152,8 +148,6 @@
 
             var pwd2Input = document.getElementById("field_pwd2");
 
-            // input key handlers
-
             usernameInput.addEventListener("keyup", function (e) {
                 usernameInput.setCustomValidity(this.validity.patternMismatch ? usernameInput.title : "");
             }, false);
@@ -179,8 +173,6 @@
 
 </script>
 <script type="text/javascript">
-
-    // polyfill for RegExp.escape
     if(!RegExp.escape) {
         RegExp.escape = function(s) {
             return String(s).replace(/[\\^$*+?.()|[\]{}]/g, '\\$&');

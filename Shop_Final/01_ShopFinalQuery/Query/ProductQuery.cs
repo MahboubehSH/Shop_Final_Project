@@ -58,7 +58,8 @@ namespace _01_ShopFinalQuery.Query
                     ShortDescription = x.ShortDescription,
                     Pictures = MapProductPictures(x.ProductPictures)
                 }).FirstOrDefault(x=>x.Slug== slug);
-
+            if (product != null && !string.IsNullOrWhiteSpace(product.Keywords))
+                product.KeywordList = product.Keywords.Split(",").ToList();
             if (product == null)
                 return new ProductQueryModel();
             

@@ -11,7 +11,7 @@
     -> Sidebar
     -> Container
     -> Search overlay
-    -> Hero slider
+    -> Hero sliderlogin
     -> Button
     -> Category
     -> Section title
@@ -4537,7 +4537,7 @@ select {
 	font-size: 14px;
 	display: block;
 	margin-bottom: 3px;
-	color: #666;
+	color: black;
 }
 
 .rating-form input {
@@ -5549,12 +5549,17 @@ select {
 	opacity: 1;
 }
 
-/*-- Place Order --*/
-
+.login-form-input {
+    width: 200px;
+    margin-right: 158px;
+    background-color: #0892f8;
+    color: white
+}
+@import "bourbon";
 .register-button {
 	font-weight: 500;
-    font-size: 16px;
-    display: block;
+	font-size: 16px;
+	display: block;
 	/*float: left;*/
 	width: 200px;
 	height: 40px;
@@ -8937,4 +8942,10 @@ h2.vc_custom_heading {
 	font-size: 12px;
 	color: #cc4271;
 	padding: 10px 0;
+}
+form i {
+	cursor: pointer;
+    font-size: 16px;
+    margin-right: -30px;
+    padding-top: 0.7rem
 }

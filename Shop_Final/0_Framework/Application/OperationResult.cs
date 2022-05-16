@@ -26,6 +26,13 @@ namespace _0_Framework.Application
             return this;
         }
 
+        public OperationResult SuccessResetPass(string message = "کلمه عبور جدید به ایمیل شما ارسال گردید.")
+        {
+            IsSuccedded = true;
+            Message = message;
+            return this;
+        }
+
         public OperationResult Failed(object passwordsNotMatch)
         {
             throw new NotImplementedException();

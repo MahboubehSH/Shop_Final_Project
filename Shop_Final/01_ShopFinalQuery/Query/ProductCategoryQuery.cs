@@ -46,27 +46,30 @@ namespace _01_ShopFinalQuery.Query
                     Products = MapProducts(x.Products)
                 }).AsNoTracking().FirstOrDefault(x=>x.Slug==slug);
 
-                foreach (var product in category.Products)
+            if (category != null && !string.IsNullOrWhiteSpace(category.Keyword))
+                category.KeywordList = category.Keyword.Split(",").ToList();
+
+            foreach (var product in category.Products)
+            {
+                var productInventory = inventory.FirstOrDefault(x => x.ProductId == product.Id);
+                if (productInventory != null)
                 {
-                    var productInventory = inventory.FirstOrDefault(x => x.ProductId == product.Id);
-                    if (productInventory != null)
+                    var price = productInventory.UnitPrice;
+                    product.Price = price.ToMoney();
+                    var discount = discounts.FirstOrDefault(x => x.ProductId == product.Id);
+                    if (discount != null)
                     {
-                        var price = productInventory.UnitPrice;
-                        product.Price = price.ToMoney();
-                        var discount = discounts.FirstOrDefault(x => x.ProductId == product.Id);
-                        if (discount != null)
-                        {
-                            int discountRate = discount.DiscountRate;
-                            product.DiscountRate = discountRate;
-                            product.DiscountExpireDate = discount.EndDate.ToDiscountFormat();
-                            product.HasDiscount = discountRate > 0;
-                            var discountAmount = Math.Round((price * discountRate) / 100);
-                            product.PriceWithDiscount = (price - discountAmount).ToMoney();
-                        }
+                        int discountRate = discount.DiscountRate;
+                        product.DiscountRate = discountRate;
+                        product.DiscountExpireDate = discount.EndDate.ToDiscountFormat();
+                        product.HasDiscount = discountRate > 0;
+                        var discountAmount = Math.Round((price * discountRate) / 100);
+                        product.PriceWithDiscount = (price - discountAmount).ToMoney();
                     }
                 }
+            }
 
-                return category;
+            return category;
         }
 
         public List<ProductCategoryQueryModel> GetProductCategories()
@@ -79,7 +82,8 @@ namespace _01_ShopFinalQuery.Query
                     Picture = x.Picture,
                     PictureAlt = x.PictureAlt,
                     PictureTitle = x.PictureTitle,
-                    Slug = x.Slug
+                    Slug = x.Slug,
+                    ProductsCount = x.Products.Count
                 }).AsNoTracking().ToList();
         }
 

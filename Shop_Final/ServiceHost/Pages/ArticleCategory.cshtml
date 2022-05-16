@@ -56,15 +56,13 @@
                                                     <a asp-page="./Article" asp-route-id="@article.Slug"class="blog-post-link">ادامه مطلب</a>
                                                 </div>
                                             </div>
-                                            <!--=======  End of single blog post  =======-->
                                         </div>
                                     }
                                 </div>
-                                </div>
-
-                                <div class="pagination-area">
+                             </div>
+                            <div class="pagination-area">
                                     <div class="pagination-area__left">
-                                        Showing 1 to 9 of 11 (2 Pages)
+                                        نمایش صفحه 1
                                     </div>
                                     <div class="pagination-area__right">
                                         <ul class="pagination-section">
@@ -127,7 +125,7 @@
                                         </div>
                                     </div>
                                     <div class="single-sidebar-widget">
-                                        <h2 class="single-sidebar-widget__title">تگ ها</h2>
+                                        <h2 class="single-sidebar-widget__title">برچسپ ها</h2>
                                         <ul class="single-sidebar-widget__tag-list">
                                             @foreach (var tag in Model.ArticleCategory.KeywordList)
                                             {

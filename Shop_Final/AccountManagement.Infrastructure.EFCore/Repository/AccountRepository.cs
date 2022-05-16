@@ -21,6 +21,11 @@ namespace AccountManagement.Infrastructure.EFCore.Repository
             return _context.Accounts.FirstOrDefault(x => x.Username == username);
         }
 
+        public Account GetByEmail(string email)
+        {
+            return _context.Accounts.FirstOrDefault(x => x.Email== email);
+        }
+
         public string  GetProfilePhoto(string username)
         {
              return _context.Accounts.FirstOrDefault(x => x.Username == username)?.ProfilePhoto;
@@ -37,6 +42,7 @@ namespace AccountManagement.Infrastructure.EFCore.Repository
                     Fullname = x.Fullname,
                     Username = x.Username,
                     Mobile = x.Mobile,
+                    Email = x.Email,
                     RoleId = x.RoleId
                 }).FirstOrDefault(x => x.Id == id);
         }
@@ -54,6 +60,7 @@ namespace AccountManagement.Infrastructure.EFCore.Repository
                 Role = x.Role.Name,
                 RoleId = x.RoleId,
                 Mobile = x.Mobile,
+                Email = x.Email,
                 CreationDate = x.CreationDate.ToFarsi()
             });
 
@@ -65,6 +72,9 @@ namespace AccountManagement.Infrastructure.EFCore.Repository
 
             if (!string.IsNullOrWhiteSpace(searchModel.Mobile))
                 query = query.Where(x => x.Mobile.Contains(searchModel.Mobile));
+           
+            if (!string.IsNullOrWhiteSpace(searchModel.Email))
+                query = query.Where(x => x.Email.Contains(searchModel.Email));
 
             if (searchModel.RoleId > 0)
                 query = query.Where(x => x.RoleId == searchModel.RoleId);

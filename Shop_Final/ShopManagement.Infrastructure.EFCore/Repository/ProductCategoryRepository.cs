@@ -68,6 +68,7 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
                 Name = x.Name,
                 CreationDate = x.CreationDate.ToFarsi(),
                 Picture = x.Picture,
+                ProductsCount = x.Products.Count
 
             });
             if (!string.IsNullOrWhiteSpace(searchModel.Name))

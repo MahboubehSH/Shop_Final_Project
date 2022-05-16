@@ -12,8 +12,10 @@ namespace _01_ShopFinalQuery.Contracts.ProductCategory
         public string PictureTitle { get;set; }
         public string Slug { get; set; }
         public string Keyword { get; set; }
+        public List<string> KeywordList { get; set; }
         public string MetaDescription { get; set; }
         public string Description { get; set; }
+        public long ProductsCount { get; set; }
 
         public List<ProductQueryModel> Products { get; set; }
     }

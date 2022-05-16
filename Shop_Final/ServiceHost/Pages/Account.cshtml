@@ -39,35 +39,29 @@
                                 {
                                     <div class="alert alert-danger">لطفا اطلاعات خود را وارد نمائید</div>
                                 }
-                                <form method="post" asp-page-handler="Login">
+                                <form id="loginform" method="post" asp-page-handler="Login" >
                                     <div class="login-form">
                                         <h4 class="login-title">ورود به حساب کاربری</h4>
                                         <div class="row" style="flex-direction: column; align-items: center">
                                             <div class="col-md-6 col-6">
                                                 <label>نام کاربری</label>
-                                                <input type="text" name="username" placeholder="نام کاربری" style="margin-bottom: 45px;">
-                                                @* <span asp-validation-for="username" class="error"></span>*@
+                                                <input type="text" name="username" autocomplete="username"
+                                                       id="user-text-field" placeholder="نام کاربری" style="margin-bottom: 45px;">
                                             </div>
                                             <div class="col-6">
                                                 <label>کلمه عبور</label>
-                                                <input type="password" name="password" placeholder="کلمه عبور">
-                                            </div>
-
-                                            <div class="col-sm-6">
-                                                <div class="check-box d-inline-block ml-0 ml-md-2">
-                                                    <input type="checkbox" id="remember_me">
-                                                    <label for="remember_me">
-                                                        مرا به خاطر بسپار
-                                                    </label>
-                                                </div>
+                                                <p style="display: flex">
+                                                    <input id="password" type="password" autocomplete="current-password" name="password" placeholder="کلمه عبور">
+                                                    <i class="bi bi-eye-slash" id="togglePassword"></i>
+                                                </p>
                                             </div>
                                         </div>
                                         <div class="row" style="flex-direction: column; align-items: center">
-                                            <div class="col-md-6" style="margin-bottom: 15px">
-                                                <button class="register-button" style="margin-right: 152px;">ورود</button>
+                                            <div class="col-md-6">
+                                                <input  type="submit" value="ورود" style="width: 200px;margin-right: 158px;background-color: #0892f8; color: white;margin-top: 40px">
                                             </div>
                                             <div class="col-sm-6">
-                                                <a href="#" class="forget-pass-link" style="margin-right: 190px">فراموشی رمز عبور؟</a>
+                                                <a asp-page="/AccountForgetPassword" class="forget-pass-link" style="margin-right: 205px">فراموشی کلمه عبور؟</a>
 
                                             </div>
                                             <div class="row" style="flex-direction: column; align-items: center">
@@ -87,3 +81,22 @@
         </div>
     </div>
 </div>
+<script>
+    const togglePassword = document.querySelector("#togglePassword");
+    const password = document.querySelector("#password");
+
+    togglePassword.addEventListener("click", function () {
+        // toggle the type attribute
+        const type = password.getAttribute("type") === "password" ? "text" : "password";
+        password.setAttribute("type", type);
+            
+        // toggle the icon
+        this.classList.toggle("bi-eye");
+    });
+
+    // prevent form submit
+    const form = document.querySelector("form");
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+    });
+</script>

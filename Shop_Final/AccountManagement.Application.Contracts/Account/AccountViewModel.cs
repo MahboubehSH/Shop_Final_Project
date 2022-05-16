@@ -10,6 +10,6 @@
         public string Role { get; set; }
         public string ProfilePhoto { get; set; }
         public string CreationDate { get; set; }
-
+        public string Email { get; set; }
     }
 }

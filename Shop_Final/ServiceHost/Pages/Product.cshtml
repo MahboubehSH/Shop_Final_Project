@@ -120,7 +120,7 @@
                                                 <i class="ion-android-star active"></i>
                                                 <i class="ion-android-star active"></i>
                                                 <i class="ion-android-star active"></i>
-                                                <i class="ion-android-star active"></i>
+                                                <i class="ion-android-star-outline"></i>
                                                 <i class="ion-android-star-outline"></i>
                                             </span>
                                         </div>
@@ -186,9 +186,17 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <p class="single-info mb-0">
-                                            برچسب ها: @Model.Product.Keywords
-                                        </p>
+                                        <div class="single-sidebar-widget">
+                                            <h4 class="single-sidebar-widget__title">برچسپ ها</h4>
+                                            <ul class="single-sidebar-widget__tag-list">
+                                                @foreach (var tag in Model.Product.KeywordList)
+                                                {
+                                                    <li>
+                                                        <a asp-page="/Search" asp-route-value="@tag">@tag</a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -210,8 +218,9 @@
                                         <div class="tab-content" id="nav-tabContent">
                                             <div class="tab-pane fade show active" id="product-description"
                                                  role="tabpanel" aria-labelledby="description-tab">
-                                                <div class="product-description">
-                                                    @Model.Product.Description
+                                                <div class="product-description" style="font-size: 14px;">
+                                                    <strong>@Model.Product.Description</strong>
+
                                                 </div>
                                             </div>
                                             <div class="tab-pane fade" id="review" role="tabpanel"
@@ -229,7 +238,7 @@
                                                         </div>
                                                     }
                                                     <div class="rating-form-wrapper fix">
-                                                        <h3>نظر خود را با ما به اشتراک بگذارید</h3>
+                                                        <h3>نظرات خود را با ما به اشتراک بگذارید</h3>
                                                         <form method="post">
                                                             <div class="rating-form row">
                                                                 <div class="col-md-6 col-12 form-group">
