@@ -112,7 +112,18 @@ namespace AccountManagement.Application
             var account = _accountRepository.GetByEmail(command.Email);
             if (account == null)
                 return operation.Failed(ApplicationMessages.WrongEmail);
-            _emailService.SendEmail("بازیابی رمز عبور", $"کاربر گرامی {account.Fullname} <br/> لطفا بر روی لینک زیر برای بازیابی رمز عبور خود کلیک کنید: </br> با تشکر </br> شرکت ارتعاش الکترونیک آروج", $"{account.Email}");
+
+            bool includeLowercase = true;
+            bool includeUppercase = true;
+            bool includeNumeric = true;
+            int lengthOfPassword = 10;
+            string password = PasswordGenerator.GeneratePassword(includeLowercase, includeUppercase, includeNumeric, lengthOfPassword);
+
+            while (!PasswordGenerator.PasswordIsValid(includeLowercase, includeUppercase, includeNumeric, password))
+            {
+                password = PasswordGenerator.GeneratePassword(includeLowercase, includeUppercase, includeNumeric, lengthOfPassword);
+            }
+            _emailService.SendEmail("بازیابی رمز عبور", $"کاربر گرامی {account.Fullname}<br/>رمز عبور جدید شما : {password} <br/> با تشکر <br/> شرکت ارتعاش الکترونیک آروج", $"{account.Email}");
             return operation.SuccessResetPass();
         }
 

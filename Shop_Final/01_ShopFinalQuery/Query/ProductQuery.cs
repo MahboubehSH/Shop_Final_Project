@@ -127,7 +127,7 @@ namespace _01_ShopFinalQuery.Query
                     Picture = product.Picture,
                     PictureAlt = product.PictureAlt,
                     PictureTitle = product.PictureTitle,
-                    Slug = product.Slug
+                    Slug = product.Slug,
 
                 }).AsNoTracking().OrderByDescending(x=>x.Id).Take(6).ToList();
 
@@ -138,6 +138,7 @@ namespace _01_ShopFinalQuery.Query
                 {
                     var price = productInventory.UnitPrice;
                     product.Price = price.ToMoney();
+                    product.DoublePrice = price;
                     var discount = discounts.FirstOrDefault(x => x.ProductId == product.Id);
                     if (discount != null)
                     {
@@ -185,6 +186,7 @@ namespace _01_ShopFinalQuery.Query
                 {
                     var price = productInventory.UnitPrice;
                     product.Price = price.ToMoney();
+                    product.DoublePrice = price;
                     var discount = discounts.FirstOrDefault(x => x.ProductId == product.Id);
                     if (discount == null) continue;
                     var discountRate = discount.DiscountRate;

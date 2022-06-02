@@ -43,7 +43,7 @@
                             }' data-slick-responsive='[
                                 {"breakpoint":1501, "settings": {"slidesToShow": 4} },
                                 {"breakpoint":1199, "settings": {"slidesToShow": 4, "arrows": false} },
-                                {"breakpoint":991, "settings": {"slidesToShow": 3, "arrows": false} },
+                                {"breakpoint":991, "settings": {"slidesToShow": 3, "arrows": false} },data-quantity
                                 {"breakpoint":767, "settings": {"slidesToShow": 2, "arrows": false} },
                                 {"breakpoint":575, "settings": {"slidesToShow": 2, "arrows": false} },
                                 {"breakpoint":479, "settings": {"slidesToShow": 1, "arrows": false} }
@@ -64,10 +64,11 @@
                                                                  style="border-radius: 20px; box-shadow: 0 0 5px #007bff; margin-top: 5px;"alt="@product.PictureAlt">
                                                         </a>
                                                         <div class="hover-icons">
-                                                            <a href="javascript:void(0)"><i class="ion-bag"></i></a>
-                                                           @* <a href="javascript:void(0)"><i class="ion-heart"></i></a>*@
+                                                            <a href="javascript:void(0)" id="add-to-cart-hover-icon">
+                                                                <i class="ion-bag" onclick="addToCartHovericon('@product.Id', '@product.Name', '@product.DoublePrice', '@product.Picture')"></i>
+                                                            </a>
                                                             <a href="javascript:void(0)"><i class="ion-android-options"></i></a>
-                                                            <a href="javascript:void(0)" data-toggle="modal"
+                                                            <a asp-page="/Product" asp-route-id="@product.Slug" data-toggle="modal"
                                                                data-target="#quick-view-modal-container"><i class="ion-android-open"></i></a>
                                                         </div>
                                                     </div>
@@ -93,12 +94,12 @@
                                                         <p class="single-grid-product__price">
                                                             @if (product.HasDiscount)
                                                             {
-                                                                <span class="discounted-price">@product.PriceWithDiscount تومان</span>
-                                                                <span class="main-price discounted">@product.Price تومان</span>
+                                                                <span class="discounted-price">@product.PriceWithDiscount ریال</span>
+                                                                <span class="main-price discounted">@product.Price ریال</span>
                                                             }
                                                             else
                                                             {
-                                                                <span class="main-price">@product.Price تومان</span>
+                                                                <span class="main-price">@product.Price ریال</span>
                                                             }
                                                         </p>
                                                     </div>

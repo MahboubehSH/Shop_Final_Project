@@ -13,7 +13,6 @@
                 <div class="breadcrumb-wrapper breadcrumb-bg">
                     <div class="breadcrumb-content">
                         <h1 class="breadcrumb-content__title">@Model.ProductCategory.Name</h1>
-                        <h2>@Model.ProductCategory.Description</h2>
                         <ul class="breadcrumb-content__page-map">
                             <li><a asp-page="./Index">صفحه اصلی</a></li>
                             <li class="active">@Model.ProductCategory.Name</li>
@@ -41,7 +40,7 @@
 
                                     <div class="shop-header__left">
                                         <div class="single-select-block d-inline-block">
-                                            <span class="select-title">جستجو بر اساس:</span>
+                                            <span class="select-title">مرتب سازی بر اساس:</span>
                                             <select class="pr-0">
                                                 <option value="1">پیش فرض</option>
                                                 <option value="2">نام (A-Z)</option>
@@ -50,9 +49,7 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="col-lg-9">
-                                    <div class="shop-page-content">
+                                <div class="shop-page-content">
                                         <div class="row shop-product-wrap grid three-column">
                                             @foreach (var product in Model.ProductCategory.Products)
                                             {
@@ -90,12 +87,12 @@
                                                             <p class="single-grid-product__price">
                                                                 @if (product.HasDiscount)
                                                                 {
-                                                                    <span class="discounted-price">@product.PriceWithDiscount تومان</span>
-                                                                    <span class="main-price discounted">@product.Price تومان</span>
+                                                                <span class="discounted-price">@product.PriceWithDiscount ریال</span>
+                                                                <span class="main-price discounted">@product.Price ریال</span>
                                                                 }
                                                                 else
                                                                 {
-                                                                    <span class="main-price">@product.Price تومان</span>
+                                                                  <span class="main-price">@product.Price ریال</span>
                                                                 }
                                                             </p>
                                                             @if (product.HasDiscount)
@@ -108,7 +105,6 @@
                                             }
                                         </div>
                                     </div>
-                                </div>
                                 <div class="pagination-area">
                                     <div class="pagination-area__left">
                                         نمایش صفحه 1
@@ -154,22 +150,25 @@
                                             <div class="block-container">
                                                 @foreach (var product in Model.LatestProducts)
                                                 {
-                                                    <div class="single-block d-flex">
-                                                        <div class="image">
-                                                            <a asp-page="./Product" asp-route-id="@product.Slug">
-                                                                <img src="~/ProductPictures/@product.Picture"
-                                                                     class="img-fluid" alt="@product.PictureAlt"
-                                                                     title="@product.PictureTitle">
-                                                            </a>
-                                                        </div>
-                                                        <div class="content">
-                                                            <p>
+                                                    @if ((product.Id>3) & (product.Id < 8))
+                                                    {
+                                                        <div class="single-block d-flex">
+                                                            <div class="image">
                                                                 <a asp-page="./Product" asp-route-id="@product.Slug">
-                                                                    @product.Name
+                                                                    <img src="~/ProductPictures/@product.Picture"
+                                                                         class="img-fluid" alt="@product.PictureAlt"
+                                                                         title="@product.PictureTitle">
                                                                 </a>
-                                                            </p>
+                                                            </div>
+                                                            <div class="content">
+                                                                <p>
+                                                                    <a asp-page="./Product" asp-route-id="@product.Slug">
+                                                                        @product.Name
+                                                                    </a>
+                                                                </p>
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                    }
                                                 }
                                             </div>
                                         </div>

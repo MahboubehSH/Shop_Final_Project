@@ -56,6 +56,8 @@ namespace _01_ShopFinalQuery.Query
                 {
                     var price = productInventory.UnitPrice;
                     product.Price = price.ToMoney();
+                    product.DoublePrice = price;
+
                     var discount = discounts.FirstOrDefault(x => x.ProductId == product.Id);
                     if (discount != null)
                     {
@@ -114,6 +116,8 @@ namespace _01_ShopFinalQuery.Query
                    {
                        var price = productInventory.UnitPrice;
                        product.Price = price.ToMoney();
+                       product.DoublePrice = price;
+
                        var discount = discounts.FirstOrDefault(x => x.ProductId == product.Id);
                        if (discount != null)
                        {
