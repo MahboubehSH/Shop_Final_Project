@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using _0_Framework.Domain;
-using ShopManagement.Application.Contracts;
 
 namespace ShopManagement.Domain.OrderAgg
 {
@@ -33,7 +32,7 @@ namespace ShopManagement.Domain.OrderAgg
         public void PaymentSucceeded(long refId)
         {
             IsPaid = true;
-            if (RefId!= 0)
+            if (refId!= 0)
             {
                 RefId = refId;
             }

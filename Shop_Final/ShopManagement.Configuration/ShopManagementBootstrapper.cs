@@ -17,9 +17,11 @@ using ShopManagement.Domain.OrderAgg;
 using ShopManagement.Domain.ProductAgg;
 using ShopManagement.Domain.ProductCategoryAgg;
 using ShopManagement.Domain.ProductPictureAgg;
+using ShopManagement.Domain.Services;
 using ShopManagement.Domain.SlideAgg;
 using ShopManagement.Infrastructure.EFCore;
 using ShopManagement.Infrastructure.EFCore.Repository;
+using ShopManagement.InventoryAcl;
 
 namespace ShopManagement.Configuration
 {
@@ -44,6 +46,7 @@ namespace ShopManagement.Configuration
             services.AddTransient<IOrderRepository, OrderRepository>();
 
             services.AddSingleton<ICartService, CartService>();
+            services.AddTransient<IInventoryAcl1, InventoryAcl1>();
 
             services.AddTransient<ISlideQuery, SlideQuery>();
 

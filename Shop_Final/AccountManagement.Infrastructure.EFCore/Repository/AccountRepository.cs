@@ -81,5 +81,15 @@ namespace AccountManagement.Infrastructure.EFCore.Repository
             
             return query.OrderByDescending(x=>x.Id).ToList();
         }
+
+        public List<AccountViewModel> GetAccounts()
+        {
+            return _context.Accounts.Select(x => new AccountViewModel
+            {
+                Id = x.Id,
+                Fullname = x.Fullname
+
+            }).ToList();
+        }
     }
 }

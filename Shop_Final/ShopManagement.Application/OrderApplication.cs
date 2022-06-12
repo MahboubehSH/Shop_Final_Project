@@ -1,7 +1,9 @@
-﻿using _0_Framework.Application;
+﻿using System.Collections.Generic;
+using _0_Framework.Application;
 using Microsoft.Extensions.Configuration;
 using ShopManagement.Application.Contracts.Order;
 using ShopManagement.Domain.OrderAgg;
+using ShopManagement.Domain.Services;
 
 namespace ShopManagement.Application 
 {
@@ -10,13 +12,14 @@ namespace ShopManagement.Application
         private readonly IAuthHelper _authHelper;
         private readonly IConfiguration _configuration;
         private readonly IOrderRepository _orderRepository;
+        private readonly IInventoryAcl1 _inventoryAcl1;
 
-
-        public OrderApplication(IOrderRepository orderRepository, IAuthHelper authHelper, IConfiguration configuration)
+        public OrderApplication(IOrderRepository orderRepository, IAuthHelper authHelper, IConfiguration configuration, IInventoryAcl1 inventoryAcl1)
         {
             _orderRepository = orderRepository;
             _authHelper = authHelper;
             _configuration = configuration;
+            _inventoryAcl1 = inventoryAcl1;
         }
 
         public long PlaceOrder(Cart cart)
@@ -39,6 +42,13 @@ namespace ShopManagement.Application
             return _orderRepository.GetAmountBy(id);
         }
 
+        public void Cancel(long id)
+        {
+            var order = _orderRepository.Get(id);
+            order.Cancel();
+            _orderRepository.SaveChanges();
+        }
+
         public string PaymentSucceeded(long orderId , long refId)
         {
             var order = _orderRepository.Get(orderId);
@@ -46,10 +56,20 @@ namespace ShopManagement.Application
             var symbol = _configuration.GetValue<string>("Symbol");
             var issueTrackingNo = CodeGenerator.Generate(symbol);
             order.SetIssueTrackingNo(issueTrackingNo);
-            //reduce OrderItems From Inventory
+            if (!_inventoryAcl1.ReduceFromInventory(order.Items)) return "";
             _orderRepository.SaveChanges();
             return issueTrackingNo;
 
+        }
+
+        public List<OrderViewModel> Search(OrderSearchModel searchModel)
+        {
+            return _orderRepository.Search(searchModel);
+        }
+
+        public List<OrderItemViewModel> GetItems(long orderId)
+        {
+            return _orderRepository.GetItems(orderId);
         }
     }
 }

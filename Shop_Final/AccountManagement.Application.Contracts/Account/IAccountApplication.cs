@@ -12,6 +12,7 @@ namespace AccountManagement.Application.Contracts.Account
         OperationResult ForgetPassword(AccountForgetPassword command);
         EditAccount GetDetails(long id); 
         List<AccountViewModel> Search(AccountSearchModel searchModel);
+        List<AccountViewModel> GetAccounts();
         void Logout();
     }
 }

@@ -27,4 +27,8 @@
     <ProjectReference Include="..\ShopManagement.Presentation.Api\ShopManagement.Presentation.Api.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\ProductPictures\سیستم-های-پردازش-تصاویر\" />
+  </ItemGroup>
+
 </Project>

@@ -11,5 +11,6 @@ namespace AccountManagement.Domain.AccountAgg
         string GetProfilePhoto(string username);
         EditAccount GetDetails(long id);
         List<AccountViewModel> Search(AccountSearchModel searchModel);
+        List<AccountViewModel> GetAccounts();
     }
 }
