@@ -1,5 +1,4 @@
-﻿using _0_Framework.Application;
-using AccountManagement.Application.Contracts.Account;
+﻿using AccountManagement.Application.Contracts.Account;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 

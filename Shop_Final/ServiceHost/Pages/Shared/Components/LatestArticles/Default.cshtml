@@ -1,19 +1,33 @@
 ﻿@model List<_01_ShopFinalQuery.Contracts.Article.ArticleQueryModel>
 
 <div class="blog-post-slider-area">
+    <div class="section-title-site" style="height:120px">
+        <div class="container">
+            <div class="section-content-site">
+                <div class="section-content-site text-content">
+                    <div class="section-content-site text-content text-align">
+                        <h2>
+                            آخرین اخبار و اطلاعیه های آروج
+                        </h2>
+                    </div>
+                </div>
+                <div class="section-content-site triangle-down" style="bottom: -60px"></div>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="blog-post-slider-border-wrapper section-space--inner">
                     <div class="row">
-                        <div class="col-lg-12">
+                        @*<div class="col-lg-12">
                             <div class="section-title-wrapper text-center section-space--half">
                                 <h2 class="section-title"><strong>آخرین مقالات/اخبار</strong></h2>
                                 <p class="section-subtitle">
                                     <strong>اخبار آروج را همیشه و در هر جا دنبال کنید</strong>
                                 </p>
                             </div>
-                        </div>
+                        </div>*@
                         <div class="col-lg-12">
                             <div class="blog-post-slider-wrapper">
                                 <div class="ht-slick-slider" data-slick-setting='{
@@ -34,7 +48,8 @@
                                     {"breakpoint":479, "settings": {"slidesToShow": 1} }
                                 ]'>
                                     @foreach (var article in Model)
-                                    {<div class="col">
+                                    {
+                                    <div class="col">
                                         <div class="single-slider-post">
                                             <div class="single-slider-post__image">
                                                 <a asp-page="/Article" asp-route-id="@article.Slug">
@@ -48,10 +63,10 @@
                                             <div class="single-slider-post__content">
                                                 <h3 class="title">
                                                     <a asp-page="/Article" asp-route-id="@article.Slug">
-                                                       @article.Title
+                                                        @article.Title
                                                     </a>
                                                 </h3>
-                                               @* <p class="post-meta">by <a href="#">HasTech</a></p>*@
+                                                @* <p class="post-meta">by <a href="#">HasTech</a></p>*@
                                                 <p class="short-desc">@article.ShortDescription</p>
                                                 <a asp-page="/Article" asp-route-id="@article.Slug" class="blog-post-link"> ادامه مطلب <i class="ion-android-arrow-back"></i></a>
                                             </div>

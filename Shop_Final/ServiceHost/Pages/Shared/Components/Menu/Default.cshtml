@@ -1,14 +1,31 @@
 ﻿@model _01_ShopFinalQuery.MenuModel
 @inject _0_Framework.Application.IAuthHelper _authHelper
-<div style="width: 100%; background-color: #0891f8; height: 40px; background-image: url(https://demo.webdigify.com/OPC01/OPC001/catalog/view/theme/Demo-Store/image/webdigify/top-bg.png)">
+<div style="width: 100%; background-color:#082233 ; height: 40px; background-image: url(https://demo.webdigify.com/OPC01/OPC001/catalog/view/theme/Demo-Store/image/webdigify/top-bg.png)">
     <div class="container">
-        <ul class="header-links pull-left">
-            <li><a href="mailto:arooj.e.v.co@gmail.com">arooj.e.v.co@gmail.com<i class="fa fa-envelope-o"></i></a></li>
-            <li><a href="tel://09172402275">989172402275+<i class="fa fa-phone"></i></a></li>
+        <ul class="header-links pull-right">
+            <li><a href="tel://09172402275"><i class="fa fa-phone"></i> 989172402275+ </a></li>
+            <li><a href="mailto:arooj.e.v.co@gmail.com"><i class="fa fa-envelope-o"></i> arooj.e.v.co@gmail.com  </a></li>
         </ul>
-     </div>
+        <ul class="header-links pull-left" >
+            <li>
+                <a href="https://twitter.com/MohsenHeidary85?t=jsLrMyZzVz7JoxpACnLy1g&s=08">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://wa/me/989172402275">
+                    <i class="fa fa-whatsapp"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/aroojev/">
+                    <i class="fa fa-instagram"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
 </div>
-<div class="header-area header-sticky">
+<div class="header-area header-sticky" style="background-color: #ffaf00;">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -19,13 +36,13 @@
                         </a>
                     </div>
                     <div class="navigation-menu-wrapper">
-                        <nav>
+                        <nav class="cl-effect-2">
                             <ul>
                                 <li>
-                                    <a asp-page="/Index" style="font-size: 14px"><strong>خانه</strong></a>
+                                    <a asp-page="/Index"><span data-hover="خانه">خانه</span></a>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a style="font-size: 14px"><strong>محصولات</strong></a>
+                                    <a><span data-hover="محصولات">محصولات</span></a>
                                     <ul class="sub-menu">
                                         @foreach (var category in Model.ProductCategories)
                                         {
@@ -36,7 +53,7 @@
                                     </ul>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a style="font-size: 14px"><strong>مقالات</strong></a>
+                                    <a><span data-hover="اخبار">اخبار</span></a>
                                     <ul class="sub-menu">
                                         @foreach (var category in Model.ArticleCategories)
                                         {
@@ -47,21 +64,26 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a asp-page="/AboutUs" style="font-size: 14px"><strong>درباره ما</strong></a>
+                                    <a asp-page="/AboutUs"><span data-hover="درباره ما">درباره ما</span></a>
                                 </li>
                                 <li>
-                                    <a asp-page="/Contact" style="font-size: 14px"><strong>تماس با ما</strong></a>
+                                    <a asp-page="/Contact"><span data-hover="تماس با ما">تماس با ما</span></a>
                                 </li>
                                 @if (_authHelper.IsAuthenticated())
                                 {
-                                    <li>
-                                        <a asp-page="/Account" asp-page-handler="Logout" style="font-size: 14px"><strong>خروج</strong></a>
+                                    <li class="menu-item-has-children">
+                                        <a><span data-hover="@_authHelper.CurrentAccountInfo().Fullname">@_authHelper.CurrentAccountInfo().Fullname</span></a>
+                                        <ul class="sub-menu">
+                                            <li>
+                                                <a asp-page="/Account" asp-page-handler="Logout"><span>خروج</span></a>
+                                            </li>
+                                        </ul>
                                     </li>
                                 }
                                 else
                                 {
                                     <li>
-                                        <a asp-page="/Account" style="font-size: 14px"><strong>ورود</strong></a>
+                                        <a asp-page="/Account"><span data-hover="ورود">ورود</span></a>
                                     </li>
                                 }
                             </ul>
@@ -107,9 +129,23 @@
                                                 <li>
                                                     <a asp-page="/Register">ثبت نام</a>
                                                 </li>
-                                                <li>
-                                                    <a asp-page="/Account">ورود</a>
-                                                </li>
+                                                @if (_authHelper.IsAuthenticated())
+                                                {
+                                                    <li class="menu-item-has-children">
+                                                        <a><span data-hover="@_authHelper.CurrentAccountInfo().Fullname">@_authHelper.CurrentAccountInfo().Fullname</span></a>
+                                                        <ul class="sub-menu">
+                                                            <li>
+                                                                <a asp-page="/Account" asp-page-handler="Logout"><span>خروج</span></a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                }
+                                                else
+                                                {
+                                                    <li>
+                                                        <a asp-page="/Account"><span data-hover="ورود">ورود</span></a>
+                                                    </li>
+                                                }
                                             </ul>
                                         </div>
                                         <div class="single-settings-block">
@@ -139,7 +175,7 @@
                         <div class="col-6 col-md-6">
                             <div class="header-logo">
                                 <a asp-page="/Index">
-                                    <img src="~/Theme/assets/img/Logo_Site.png" class="img-fluid" alt="">
+                                    <img src="~/Theme/assets/img/Logo_Site.png" class="img-fluid" alt="Arooj Electronic Vibration Logo">
                                 </a>
                             </div>
                         </div>
@@ -188,8 +224,8 @@
 
         <div class="offcanvas-inner-content">
             <div class="offcanvas-mobile-search-area">
-                <form action="#">
-                    <input type="search" placeholder="جستجو ...">
+                <form method="get" asp-page="/Search">
+                    <input type="search" name="value" id="value" placeholder="جستجو ...">
                     <button type="submit">
                         <i class="fa fa-search"></i>
                     </button>
@@ -198,7 +234,7 @@
             <nav class="offcanvas-navigation">
                 <ul>
                     <li class="">
-                        <a asp-page="/Index">خانه</a>
+                        <a  asp-page="/Index">خانه</a>
                     </li>
                     <li class="menu-item-has-children">
                         <a>محصولات</a>
@@ -212,7 +248,7 @@
                         </ul>
                     </li>
                     <li class="menu-item-has-children">
-                        <a>مقالات</a>
+                        <a>اخبار</a>
                         <ul class="sub-menu">
                             @foreach (var category in Model.ArticleCategories)
                             {
@@ -228,26 +264,12 @@
                     <li class="">
                         <a asp-page="/Contact">تماس با ما</a>
                     </li>
-                    @*@if (_authHelper.IsAuthenticated())
-                    {
-                        <li>
-                            <a asp-page="/Account" asp-page-handler="Logout">خروج</a>
-                        </li>
-                    }
-                    else
-                    {
-                        <li>
-                            <a asp-page="/Account">وورد / ثبت نام</a>
-                        </li>
-                    }*@
                 </ul>
             </nav>
             <div class="offcanvas-settings">
                 <nav class="offcanvas-navigation">
                     <ul>
-                    <li class="menu-item-has-children">
-                    @*<div class="settings-menu-wrapper" id="settings-menu-wrapper">
-                        <div class="single-settings-block">*@
+                        <li class="menu-item-has-children">
                             <a>پروفایل من </a>
                             <ul>
                                 @if (_authHelper.IsAuthenticated())
@@ -265,28 +287,25 @@
 
                                 }
                             </ul>
-                        @*</div>*@
                         </li>
+                    </ul>
+                    <div class="single-settings-block" style="margin-top: 10px;">
+                        <h6 class="title"><strong>LANGUAGE: FA-EN</strong></h6>
+                        <ul>
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <img src="~/Theme/assets/img/icons/IR_Icon.png" alt=""> Farsi
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <img src="~/Theme/assets/img/icons/en-gb.png" alt=""> English
+                                </a>
+                            </li>
                         </ul>
-                        <div class="single-settings-block">
-                            <h6 class="title">LANGUAGE: FA-EN </h6>
-                            <ul>
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <img src="~/Theme/assets/img/icons/IR_Icon.png" alt=""> Farsi
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <img src="~/Theme/assets/img/icons/en-gb.png" alt=""> English
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    @*</div>*@
+                    </div>
                 </nav>
             </div>
-
             <div class="offcanvas-widget-area">
                 <div class="off-canvas-contact-widget">
                     <div class="header-contact-info">
@@ -304,19 +323,17 @@
                         </ul>
                     </div>
                 </div>
-                <!--Off Canvas Widget Social Start-->
                 <div class="off-canvas-widget-social">
                     <a href="https://www.instagram.com/aroojev/" title="Instagram">
                         <i class="fa fa-instagram"></i>
                     </a>
-                    <a href="#" title="Whatsapp">
+                    <a href="https://wa/me/989172402275" title="WhatsApp">
                         <i class="fa fa-whatsapp"></i>
                     </a>
-                    <a href="#" title="Twitter">
+                    <a href="https://twitter.com/MohsenHeidary85?t=jsLrMyZzVz7JoxpACnLy1g&s=08" title="Twitter">
                         <i class="fa fa-twitter"></i>
                     </a>
                 </div>
-                <!--Off Canvas Widget Social End-->
             </div>
         </div>
     </div>

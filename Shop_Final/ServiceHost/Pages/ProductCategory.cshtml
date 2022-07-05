@@ -10,7 +10,7 @@
     <div class="container wide">
         <div class="row">
             <div class="col-lg-12">
-                <div class="breadcrumb-wrapper breadcrumb-bg">
+                <div class="breadcrumb-wrapper breadcrumb-bg2">
                     <div class="breadcrumb-content">
                         <h1 class="breadcrumb-content__title">@Model.ProductCategory.Name</h1>
                         <ul class="breadcrumb-content__page-map">
@@ -40,7 +40,7 @@
 
                                     <div class="shop-header__left">
                                         <div class="single-select-block d-inline-block">
-                                            <span class="select-title">مرتب سازی بر اساس:</span>
+                                            <span class="select-title">نمایش بر اساس:</span>
                                             <select class="pr-0">
                                                 <option value="1">پیش فرض</option>
                                                 <option value="2">نام (A-Z)</option>
@@ -84,20 +84,28 @@
                                                             <h2 class="single-grid-product__title">
                                                                 <a asp-page="/Product" asp-route-id="@product.Slug">@product.Name</a>
                                                             </h2>
-                                                            <p class="single-grid-product__price">
+                                                            @if (product.Price ==  null || !product.IsInStock)
+                                                            {
+                                                                <button href="tel://09172402275" style="background-color: #ffaf00; height: 25px; border-radius: 20px; box-shadow: 0 0 5px #007bff">
+                                                                    <i class="fa fa-phone"></i> جهت اطلاع از قیمت، تماس بگیرید </button>
+                                                            }
+                                                            else
+                                                            {
+                                                                <p class="single-grid-product__price">
+                                                                    @if (product.HasDiscount)
+                                                                    {
+                                                                        <span class="discounted-price">@product.PriceWithDiscount تومان</span>
+                                                                        <span class="main-price discounted">@product.Price تومان</span>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <span class="main-price">@product.Price تومان</span>
+                                                                    }
+                                                                </p>
                                                                 @if (product.HasDiscount)
                                                                 {
-                                                                <span class="discounted-price">@product.PriceWithDiscount ریال</span>
-                                                                <span class="main-price discounted">@product.Price ریال</span>
+                                                                    <div class="product-countdown" data-countdown="@product.DiscountExpireDate"></div>
                                                                 }
-                                                                else
-                                                                {
-                                                                  <span class="main-price">@product.Price ریال</span>
-                                                                }
-                                                            </p>
-                                                            @if (product.HasDiscount)
-                                                            {
-                                                                <div class="product-countdown" data-countdown="@product.DiscountExpireDate"></div>
                                                             }
                                                         </div>
                                                     </div>
@@ -105,7 +113,7 @@
                                             }
                                         </div>
                                     </div>
-                                <div class="pagination-area">
+                                @*<div class="pagination-area">
                                     <div class="pagination-area__left">
                                         نمایش صفحه 1
                                     </div>
@@ -125,7 +133,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                </div>
+                                </div>*@
                             </div>
                                 <div class="col-lg-3 order-2 order-lg-2">
                                     <div class="page-sidebar-wrapper">

@@ -85,7 +85,7 @@
 }
 
 .navigation-menu-wrapper nav > ul > li:last-child {
-    margin-right: 50px;
+    /*margin-right: 50px;*/
 }
 
 .pagination-area__right .pagination-section {

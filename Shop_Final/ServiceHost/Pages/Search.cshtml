@@ -8,12 +8,9 @@
     <div class="container wide">
         <div class="row">
             <div class="col-lg-12">
-                <div class="breadcrumb-wrapper breadcrumb-bg">
+                <div class="breadcrumb-wrapper breadcrumb-bg1">
                     <div class="breadcrumb-content">
-                        <h1 class="breadcrumb-content__title">نتیجه جستجو برای: @Model.Value</h1>
-                        @*<ul class="breadcrumb-content__page-map">
-                                <li><a asp-page="./Index">صفحه اصلی</a></li>
-                            </ul>*@
+                        <h1 class="breadcrumb-content__title">نتیجه جستجو برای: <br/> @Model.Value</h1>
                     </div>
                 </div>
             </div>
@@ -67,11 +64,11 @@
                                                             @if (product.HasDiscount)
                                                             {
                                                                 <span class="discounted-price">@product.PriceWithDiscount</span>
-                                                                <span class="main-price discounted">@product.Price ریال</span>
+                                                                <span class="main-price discounted">@product.Price تومان</span>
                                                             }
                                                             else
                                                             {
-                                                        <span class="main-price">@product.Price ریال</span>
+                                                        <span class="main-price">@product.Price تومان</span>
                                                             }
                                                         </p>
                                                         @if (product.HasDiscount)

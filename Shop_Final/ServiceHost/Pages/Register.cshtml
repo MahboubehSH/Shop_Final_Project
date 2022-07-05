@@ -30,11 +30,11 @@
                             <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
                                 @if (Model.RegisterMessage != null)
                                 {
-                                    <div class="alert alert-danger">@Model.RegisterMessage</div>
+                                    <div class="alert alert-info">@Model.RegisterMessage</div>
                                 }
                                 else
                                 {
-                                    <div class="alert alert-danger">لطفا مشخصات خود را وارد نمائید</div>
+                                    <div class="alert alert-info">لطفا مشخصات خود را وارد نمائید</div>
                                 }
                                 <form method="post" asp-page-handler="Register" id="registerForm">
                                     <div class="login-form">

@@ -1,7 +1,6 @@
 ﻿const cookieName = "cart-items";
 
 function addToCart(id, name, price, picture) {
-    debugger;
     let products = $.cookie(cookieName);
     if (products === undefined) {
         products = [];
@@ -30,7 +29,6 @@ function addToCart(id, name, price, picture) {
 }
 
 function addToCartHovericon(id, name, price, picture) {
-    debugger;
     let products = $.cookie(cookieName);
     if (products === undefined) {
         products = [];

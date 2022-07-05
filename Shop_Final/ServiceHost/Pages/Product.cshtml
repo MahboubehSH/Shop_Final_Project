@@ -10,8 +10,8 @@
     <div class="container wide">
         <div class="row">
             <div class="col-lg-12">
-                <div class="breadcrumb-wrapper breadcrumb-bg">
-                    <div class="breadcrumb-content">
+                <div class="breadcrumb-wrapper breadcrumb-bg2">
+                    <div class="breadcrumb-content" style="margin-left: 300px">
                         <h1 class="breadcrumb-content__title">@Model.Product.Name</h1>
                         <ul class="breadcrumb-content__page-map">
                             <li>
@@ -124,18 +124,18 @@
                                                 <i class="ion-android-star-outline"></i>
                                             </span>
                                         </div>
-                                        <p class="single-grid-product__price" style="direction: rtl">
+                                        @*<p class="single-grid-product__price" style="direction: rtl">
                                             @if (Model.Product.HasDiscount)
                                             {
-                                            <span class="main-price discounted">@Model.Product.Price ریال</span>
-                                            <span class="discounted-price">@Model.Product.PriceWithDiscount ریال</span>
+                                            <span class="main-price discounted">@Model.Product.Price تومان</span>
+                                            <span class="discounted-price">@Model.Product.PriceWithDiscount تومان</span>
                                             }
                                             else
                                             {
-                                        <span class="main-price">@Model.Product.Price ریال</span>
+                                                <span class="main-price">@Model.Product.Price تومان</span>
                                             }
-
-                                        </p>
+                                            
+                                        </p>*@
                                         <p class="single-info">@Model.Product.Code<span class="value">:کد محصول</span> </p>
                                         <p class="single-info">
                                             @if (Model.Product.IsInStock)
@@ -147,25 +147,33 @@
                                                 <span class="text-danger">محصول ناموجود</span>
                                             }
                                         </p>
-                                        <p class="product-description">
-                                            @Model.Product.ShortDescription
-                                        </p>
-                                        @if (Model.Product.HasDiscount)
-                                        {
-                                            <div class="product-countdown" data-countdown="@Model.Product.DiscountExpireDate"></div>
-                                        }
-                                    <div class="product-actions">
-                                        <div class="product-buttons">
-                                            <a class="cart-btn" onclick="addToCart('@Model.Product.Id', '@Model.Product.Name', '@Model.Product.DoublePrice', '@Model.Product.Picture')">
-                                                <i class="ion-bag"></i> افزودن به سبد خرید
-                                            </a>
-                                        </div>
-                                        <div class="quantity-selection">
-                                            <label>تعداد</label>
-                                            <input type="number" value="1" min="1" id="productCount" inputmode="numeric">
-                                        </div>
+                                        <div class="product-actions">
+                                            <div class="product-buttons">
+                                                <a class="cart-btn" onclick="addToCart('@Model.Product.Id', '@Model.Product.Name', '@Model.Product.DoublePrice', '@Model.Product.Picture')">
+                                                    <i class="ion-bag"></i> افزودن به سبد خرید
+                                                </a>
+                                            </div>
+                                            <div class="quantity-selection">
+                                                <label>تعداد</label>
+                                                <input type="number" value="1" min="1" id="productCount" inputmode="numeric">
+                                            </div>
 
-                                    </div>
+                                        </div>
+                                        @if (Model.Product.Price ==  null || !Model.Product.IsInStock)
+                                        {
+                                            <button href="tel://09172402275" style="background-color: #ffaf00; height: 25px; border-radius: 20px; box-shadow: 0 0 5px #007bff; margin-top: 30px;margin-bottom: 30px">
+                                                <i class="fa fa-phone"></i> جهت اطلاع از قیمت، تماس بگیرید </button>
+                                        }
+                                        else
+                                        {
+                                            <p class="product-description">
+                                                @Model.Product.ShortDescription
+                                            </p>
+                                            @if (Model.Product.HasDiscount)
+                                            {
+                                                <div class="product-countdown" data-countdown="@Model.Product.DiscountExpireDate"></div>
+                                            }
+                                        }
                                         <div class="social-share-buttons mt-20">
                                             <h5>این محصول را به اشتراک بگذارید</h5>
                                             <ul>
@@ -254,7 +262,6 @@
                                                                     <textarea name="message" id="message" placeholder="نظر خود را بنویسید ..."></textarea>
                                                                 </div>
                                                                 <input type="hidden" name="ownerRecordId" value="@Model.Product.Id" />
-                                                                @*<input type="hidden" name="type" value="CommnetManagement.Infrastructure.EFCore.CommentType.Product" />*@
                                                                 <input type="hidden" name="productSlug" value="@Model.Product.Slug" />
                                                                 <div class="col-12">
                                                                     <input value="ارسال" type="submit">

@@ -4,28 +4,37 @@
     ViewData["Title"] = "صفحه اصلی";
 }
 @await Component.InvokeAsync("Slide")
-<div class="category-area section-space" style="">
+<div class="category-area">
     @*<svg version="1.1" id="Shahab_jasemi" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1920px" height="117px" viewBox="0 0 1920 117" enable-background="new 0 0 1920 117" xml:space="preserve">
         <path id="Orange" fill="#F49D1E" d="M0,90C0,90,480.222,0,960.333,0C1440.222,0,1920,90,1920,90v26H0V90z"></path>
         <path id="Light" fill="#FFF" d="M0,111C0,111,480.222,6,960.333,6C1440.222,6,1920,111,1920,111v6H0V111z"></path>
     </svg>*@
+    <div class="section-title-site" style="height: 140px">
+        <div class="container">
+            <div class="section-content-site">
+                <div class="section-content-site text-content">
+                    <div class="section-content-site text-content text-align">
+                        <h2>
+                            حوزه فعالیت شرکت دانش بنیان
+                        </h2>
+                        <h2 style="color: #18659e;">
+                            ارتعاش الکترونیک آروج
+                        </h2>
+                    </div>
+                </div>
+                <div class="section-content-site triangle-down"></div>
+            </div>
+        </div>
+    </div>
     <div class="container"> 
         <div class="row">
-            <div class="business">
+            <div class="business section-space--inner">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <div style="padding-bottom: 50px">
-                                <p style="text-align: center;"><span style="font-size: 32px; font-family: Dubai; color: #07365a; font-weight: bold; text-shadow: rgba(136, 136, 136, 0.8) 3px 3px 2px;">حوزه فعالیت شرکت دانش بنیان</span></p>
-                                <p style="text-align: center;"><span style="font-size: 32px; font-family: Dubai; color: #18659e; font-weight: bold; text-shadow: rgba(136, 136, 136, 0.8) 3px 3px 2px;">ارتعاش الکترونیک آروج</span><span style="font-size: 32px; font-family: Dubai; color: #404040; font-weight: bold;">&nbsp;</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="business_box ">
-                                <figure style="padding-bottom: 20px"><img src="~/Theme/assets/img/backgrounds/Infographic.jpg" alt="#"></figure>
-                                <aside style="text-align: justify;"><span style="font-size: 24px; font-family: Dubai; color: rgb(0, 0, 0);"><strong>شرکت ارتعاش الکترونیک آروج</strong> با مسئولیت محدود در خرداد ماه سال&nbsp;</span><span style="font-size: 24px; font-family: Dubai; color: rgb(0, 0, 0);">1395 با کد ثبتی 11192 در محل ثبت بندر بوشهر و شناسه ملی 14005876197 تاسیس گردید. این شرکت فعالیت خود با پروژه مکانیاب آکوستیک لوله های پلی اتیلن گاز شهری آغاز کرد.</span></aside>
+                            <div class="business_box">
+                                <figure><img src="~/Theme/assets/img/backgrounds/Infographic.jpg" alt="#"></figure>
+                                <aside style="text-align: justify; margin-top: 40px;"><span style="font-size: 24px; margin-top: 40px; font-family: Dubai; color: rgb(0, 0, 0);"><strong>شرکت ارتعاش الکترونیک آروج</strong> با مسئولیت محدود در خرداد ماه سال&nbsp;</span><span style="font-size: 24px; font-family: Dubai; color: rgb(0, 0, 0);">1395 با کد ثبتی 11192 در محل ثبت بندر بوشهر و شناسه ملی 14005876197 تاسیس گردید. این شرکت فعالیت خود با پروژه مکانیاب آکوستیک لوله های پلی اتیلن گاز شهری آغاز کرد.</span></aside>
                                 <aside style="text-align: justify;"><span style="font-size: 24px; font-family: Dubai; color: black;">این شرکت در تاریخ اردیبهشت ماه 1399 به عنوان شرکت دانش&zwnj;بنیان بر روی محصول مکانیاب اکوستیک لوله های پلی اتیلن گاز شهری تایید گردید.</span></aside>
                                 <a class="read_more" asp-page="/AboutUs">
                                     <p><span style="font-size: 18px; font-family: Dubai; color: white;">اطلاعات بیشتر</span></p></a>
@@ -37,14 +46,14 @@
         </div>
     </div>
 </div>
-@*@await Component.InvokeAsync("ProductCategory")*@
 @await Component.InvokeAsync("ProductCategoryWithProduct")
 @await Component.InvokeAsync("LatestArrivals")
+@await Component.InvokeAsync("LatestArticles")
 <div class="feature-logo-area">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="feature-logo-wrapper section-space--inner-bottom">
+                <div class="feature-logo-wrapper section-space--inner">
                     <div class="row">
                         <div class="col-md-3">
                             <div class="single-feature-logo">
@@ -104,20 +113,34 @@
         </div>
     </div>
 </div>
-@await Component.InvokeAsync("LatestArticles")
-<div class="newsletter-area section-space--inner">
+<div class="newsletter-area">
+    <div class="section-title-site" style="height:140px">
+        <div class="container">
+            <div class="section-content-site">
+                <div class="section-content-site text-content">
+                    <div class="section-content-site text-content text-align">
+                        <h2>
+                            پیشنهاد های ویژه برای شما
+                        </h2>
+                        <h2 style="color: #18659e;">
+                            تخفیفات باورنکردنی
+                        </h2>
+                    </div>
+                    <div class="section-content-site triangle-down"></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-lg-12 offset-lg-2">
-                <div class="newsletter-wrapper">
-                    <p class="small-text alert-heading"><strong>پیشنهاد های ویژه برای شما</strong></p>
-                    <h5 class="title" style="color: red"><strong>تخفیفات باورنکردنی</strong></h5>
+                <div class="newsletter-wrapper section-space--inner">
                     <p class="short-desc" style="color: #1eca1e">
                         <strong>برای دریافت جدیدترین اخبار،مقالات و تخفیفات در خبرنامه آروج عضو شوید</strong>
                     </p>
                     <div class="newsletter-form">
                         <input type="email" placeholder="ایمیل خود را وارد کنید..." required>
-                        <button type="submit" style="width: 160px;height: 40px; font-weight: 700;background: #D10024;color: #FFF;border: none;border-radius: 0px 40px 40px 0px;" value="submit"><i class="fa fa-envelope"></i> عضویت در خبرنامه </button>
+                        <button type="submit" style="width: 160px; height: 40px; font-weight: 700; background: #D10024; color: #FFF; border: none; border-radius: 0px 40px 40px 0px;" value="submit"><i class="fa fa-envelope"></i> عضویت در خبرنامه </button>
                     </div>
                 </div>
             </div>

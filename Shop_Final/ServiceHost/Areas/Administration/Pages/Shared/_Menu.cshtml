@@ -15,18 +15,11 @@
             <div class="user-info">
                 <div class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">@currentAccount.Fullname</a>
-                    @*<ul class="dropdown-menu">
-                            <li><a href="javascript:void(0)"><i class="md md-face-unlock"></i> Profile<div class="ripple-wrapper"></div></a></li>
-                            <li><a href="javascript:void(0)"><i class="md md-settings"></i> Settings</a></li>
-                            <li><a href="javascript:void(0)"><i class="md md-lock"></i> Lock screen</a></li>
-                            <li><a href="javascript:void(0)"><i class="md md-settings-power"></i> Logout</a></li>
-                        </ul>*@
                 </div>
 
                 <p class="text-muted m-0">@currentAccount.Role</p>
             </div>
         </div>
-        <!--- Divider -->
         <div id="sidebar-menu">
             <ul>
                 <li>
@@ -47,7 +40,7 @@
                         <a asp-page="/Inventory/Index" class="waves-effect"><i class="md md-store"></i><span> انبارداری </span></a>
                     </li>
                     <li>
-                        <a asp-page="/Shop/Orders/Index" class="waves-effect"><i class="md md-store"></i><span> سفارشات </span></a>
+                        <a asp-page="/Shop/Orders/Index" class="waves-effect"><i class="md md-shopping-basket"></i><span> سفارشات </span></a>
                     </li>
                     <li class="has_sub">
                         <a class="waves-effect"><i class="md md-shopping-basket"></i><span>سیستم تخفیفات</span><span class="pull-right"><i class="md md-add"></i></span></a>

@@ -60,22 +60,22 @@
                                                     <a>@item.Name</a>
                                                 </td>
                                                 <td class="pro-price">
-                                                    <span>@item.UnitPrice.ToMoney() ریال</span>
+                                                    <span>@item.UnitPrice.ToMoney() تومان</span>
                                                 </td>
                                                 <td class="pro-price">
                                                     <span>@item.Count</span>
                                                 </td>
                                                 <td class="pro-subtotal">
-                                                    <span>@item.TotalItemPrice.ToMoney() ریال</span>
+                                                    <span>@item.TotalItemPrice.ToMoney() تومان</span>
                                                 </td>
                                                 <td class="pro-subtotal">
                                                     <span>@item.DiscountRate %</span>
                                                 </td>
                                                 <td class="pro-subtotal">
-                                                    <span>@item.DiscountAmount.ToMoney() ریال</span>
+                                                    <span>@item.DiscountAmount.ToMoney() تومان</span>
                                                 </td>
                                                 <td class="pro-subtotal">
-                                                    <span>@item.ItemPayAmount.ToMoney() ریال</span>
+                                                    <span>@item.ItemPayAmount.ToMoney() تومان</span>
                                                 </td>
                                             </tr>
                                         }
@@ -100,9 +100,9 @@
                                     <div class="cart-summary">
                                         <div class="cart-summary-wrap">
                                             <h4>خلاصه وضعیت فاکتور</h4>
-                                            <p>مبلغ نهایی <span>@Model.Cart.TotalAmount.ToMoney() ریال</span></p>
-                                            <p>مبلغ تخفیف <span>@Model.Cart.DiscountAmount.ToMoney() ریال</span></p>
-                                            <h2>مبلغ قابل پرداخت <span>@Model.Cart.PayAmount.ToMoney() ریال</span></h2>
+                                            <p>مبلغ نهایی <span>@Model.Cart.TotalAmount.ToMoney() تومان</span></p>
+                                            <p>مبلغ تخفیف <span>@Model.Cart.DiscountAmount.ToMoney() تومان</span></p>
+                                            <h2>مبلغ قابل پرداخت <span>@Model.Cart.PayAmount.ToMoney() تومان</span></h2>
                                         </div>
                                         <div class="cart-summary-button" style="padding-right: 200px;">
                                             <button asp-page-handler="Pay"> پرداخت نهایی</button>
