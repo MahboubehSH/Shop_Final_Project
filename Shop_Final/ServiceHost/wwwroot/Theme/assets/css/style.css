@@ -3367,6 +3367,7 @@ select {
 	line-height: 36px;
 	margin-bottom: 15px;
 	color: #111;
+	text-shadow: rgba(136, 136, 136, 0.8) 3px 3px 2px;
 }
 
 .breadcrumb-content__page-map li {
@@ -4676,11 +4677,12 @@ select {
 	background-color: #292929;
 }
 
-.rating-form input[type='submit']:hover {
-	color: #fff;
-	border-color: #e33;
-	background-color: #e33;
-}
+	.rating-form input[type='submit']:hover {
+		color: #fff;
+        border-radius: 20px;
+		border-color: #98cb00;
+		background-color: #98cb00;
+	}
 
 .rating-form textarea {
 	font-size: 13px;
@@ -7954,10 +7956,11 @@ h3.comment-counter {
 	max-height: 500px;
 }
 
-.breadcrumb-content__title {
-	font-size: 30px;
-	line-height: 30px;
-}
+	.breadcrumb-content__title {
+		font-size: 30px;
+		line-height: 30px;
+		text-shadow: rgba(136, 136, 136, 0.8) 3px 3px 2px;
+	}
 
 .breadcrumb-wrapper {
 	padding: 70px 0;
@@ -8491,10 +8494,11 @@ h3.contact-page-title {
 	padding: 30px 15px 70px 15px;
 }
 
-.breadcrumb-content__title {
-	font-size: 25px;
-	line-height: 25px;
-}
+	.breadcrumb-content__title {
+		font-size: 25px;
+		line-height: 25px;
+		text-shadow: rgba(136, 136, 136, 0.8) 3px 3px 2px;
+	}
 
 .shop-header__left__message {
 	padding-left: 10px;
@@ -9091,7 +9095,7 @@ form i {
     /*height: 25px;*/
     border-radius: 20px;
     box-shadow: 2px 2px 2px #007bff;
-    border-width: 0px;
+    border-width: 2px;
     margin-bottom: 5px;
 }
 
